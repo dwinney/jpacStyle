@@ -1,0 +1,4 @@
+*.cmake
+*.a
+Makefile
+/build/
