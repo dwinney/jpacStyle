@@ -1,4 +1,4 @@
-// The OFFICIAL JPAC graphing style for ROOT ;P
+// The OFFICIAL JPAC graphing style for ROOT
 //
 // Author:       Daniel Winney (2020)
 // Affiliation:  Joint Physics Analysis Center (JPAC)
@@ -51,6 +51,8 @@ private:
   static Int_t  kjpacBlue, kjpacRed, kjpacGreen,
                 kjpacOrange, kjpacPurple, kjpacBrown,
                 kjpacPink, kjpacGold, kjpacAqua;
+
+  static std::vector<Int_t> jpacColors;
 
   static TColor *jpacBlue, *jpacRed, *jpacGreen,
                 *jpacOrange, *jpacPurple, *jpacBrown,

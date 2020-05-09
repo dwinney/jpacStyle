@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 
 # Look for and connect ROOT and Boost
-find_package(ROOT REQUIRED)
+find_package(ROOT REQUIRED MathMore)
 if (ROOT_FOUND)
     include_directories(${ROOT_INCLUDE_DIRS})
     link_directories(${ROOT_LIBRARY_DIRS})

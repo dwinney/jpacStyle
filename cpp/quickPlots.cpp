@@ -28,8 +28,7 @@ void jpacGraph::plot(std::vector<double> s, std::vector<double> fx, std::string 
   gRe2->Draw("AL");
 
   AddLogo();
-  legend->AddEntry(gRe, "#rho exchange", "l");
-  legend->AddEntry(gRe2, "#rho_2 exchange", "l");
+  // legend->AddEntry(gRe, "#rho exchange", "l");
 
   legend->Draw();
 

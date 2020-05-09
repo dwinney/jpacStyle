@@ -35,3 +35,7 @@ TColor * jpacGraph::jpacGold = new TColor(kjpacGold, 0.7372549019607844, 0.74117
 
 Int_t jpacGraph::kjpacAqua = TColor::GetFreeColorIndex();
 TColor * jpacGraph::jpacAqua = new TColor(kjpacAqua, 0.09019607843137255, 0.7450980392156863, 0.8117647058823529);
+
+std::vector<Int_t> jpacGraph::jpacColors = {kjpacBlue, kjpacRed, kjpacGreen,
+                                kjpacOrange, kjpacPurple, kjpacBrown,
+                                kjpacPink, kjpacGold, kjpacAqua};

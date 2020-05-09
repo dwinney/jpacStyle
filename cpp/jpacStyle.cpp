@@ -1,4 +1,4 @@
-// The OFFICIAL JPAC graphing style for ROOT ;P
+// The OFFICIAL JPAC graphing style for ROOT
 //
 // Author:       Daniel Winney (2020)
 // Affiliation:  Joint Physics Analysis Center (JPAC)
@@ -81,7 +81,7 @@ void jpacGraph::AddLogo()
   JPAC += "#color[" + std::to_string(kjpacBlue) + "]{C}";
   JPAC += "}}";
 
-  logo = new TLatex(.23, .85,  JPAC.c_str());
+  logo = new TLatex(.88, .85,  JPAC.c_str());
   logo->SetNDC();
   logo->SetTextSize(2/30.);
   logo->SetTextAlign(32);
