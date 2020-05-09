@@ -28,26 +28,23 @@
 #include <TError.h>
 #include <TLatex.h>
 
-class jpacGraph
+class jpacPlot
 {
 public:
-  jpacGraph()
+  jpacPlot()
   {
     SetStyle();
   };
 
-  ~jpacGraph()
+  ~jpacPlot()
   {
     delete jpacStyle;
     delete jpacBlue, jpacRed, jpacGreen;
     delete jpacOrange, jpacPurple, jpacBrown;
     delete jpacPink, jpacGold, jpacAqua;
-    delete logo, legend;
-  }
+    delete logo, canvas;
+  };
 
-void plot(std::vector<double> s, std::vector<double> fx, std::string filename);
-
-private:
   static Int_t  kjpacBlue, kjpacRed, kjpacGreen,
                 kjpacOrange, kjpacPurple, kjpacBrown,
                 kjpacPink, kjpacGold, kjpacAqua;
@@ -63,10 +60,9 @@ private:
   void SetStyle();
 
   // Stuff regarding the Logo
+  TCanvas* canvas = new TCanvas("canvas", "canvas");
   TLatex* logo = NULL;
-  TLegend* legend = NULL;
   void AddLogo();
 };
-
 
 #endif

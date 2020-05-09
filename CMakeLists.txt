@@ -15,9 +15,10 @@ else()
 endif()
 
 # BUILD LIBRARY FROM LOCAL FiLES
-include_directories("cpp")
-file(GLOB_RECURSE INC "cpp/*.hpp")
-file(GLOB_RECURSE SRC "cpp/*.cpp")
+include_directories("include")
+include_directories("src")
+file(GLOB_RECURSE INC "include/*.hpp")
+file(GLOB_RECURSE SRC "src/*.cpp")
 
 add_library( libJpacStyle ${INC} ${SRC} )
 

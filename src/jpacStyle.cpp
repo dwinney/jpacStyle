@@ -5,11 +5,11 @@
 // Email:        dwinney@iu.edu
 // -----------------------------------------------------------------------------
 
-#include "jpacStyle.hpp"
+#include "jpacPlot.hpp"
 
 // -----------------------------------------------------------------------------
 // All other noncolor settings
-void jpacGraph::SetStyle()
+void jpacPlot::SetStyle()
 {
   gErrorIgnoreLevel = kWarning;
 
@@ -65,14 +65,11 @@ void jpacGraph::SetStyle()
 
   // Make it the global default style
   gROOT->SetStyle("jpacStyle");
-
-  // Set up the legend
-  legend = new TLegend();
-  legend->SetFillStyle(0);
-  legend->SetEntrySeparation(0.05);
 };
 
-void jpacGraph::AddLogo()
+// -----------------------------------------------------------------------------
+// Add the J^{PAC} logo in appropriate colors at the top right of the plot
+void jpacPlot::AddLogo()
 {
   std::string JPAC = "#font[72]{#color[" + std::to_string(kjpacBlue) + "]{J}";
   JPAC += "^{";
