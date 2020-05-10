@@ -40,7 +40,7 @@ void jpacPlot::SetStyle()
   jpacStyle->SetLegendTextSize(0.04);
 
   // Axis titles
-  jpacStyle->SetNdivisions(5, "xy");
+  jpacStyle->SetNdivisions(506, "xy");
   jpacStyle->SetTitleSize(.045, "xyz");
   jpacStyle->SetTitleOffset(1.2, "xyz");
 
@@ -55,6 +55,12 @@ void jpacPlot::SetStyle()
   jpacStyle->SetLabelSize(.035, "xyz");
   jpacStyle->SetLabelOffset(.01, "xyz");
 
+  // Thicker lines
+  jpacStyle->SetFrameLineWidth(2);
+
+  // Set the tick mark style
+  jpacStyle->SetPadTickX(1);
+  jpacStyle->SetPadTickY(1);
 
   const int kjpacFont = 82;
   jpacStyle->SetStatFont(kjpacFont);
@@ -66,6 +72,7 @@ void jpacPlot::SetStyle()
 
   // Make it the global default style
   gROOT->SetStyle("jpacStyle");
+  canvas->UseCurrentStyle();
 };
 
 // -----------------------------------------------------------------------------
