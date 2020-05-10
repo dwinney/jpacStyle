@@ -79,8 +79,7 @@ void jpacPlot::SetStyle()
 // Set up the color map for 2D plots
 void jpacPlot::Set2DPalette()
 {
-  Int_t NCont = 512;
-  gStyle->SetNumberContours(NCont);
+  Int_t NCont = 999;
   Double_t Red[3]   = { 0.12156862745098039, 1.0,  0.8392156862745098};
   Double_t Green[3] = { 0.4666666666666667, 1.0, 0.15294117647058825};
   Double_t Blue[3]  = { 0.7058823529411765, 1.0, 0.1568627450980392};
@@ -95,4 +94,5 @@ void jpacPlot::Set2DPalette()
   }
 
   jpacStyle->SetPalette(NCont, jpac3D);
+  jpacStyle->SetNumberContours(NCont);
 };
