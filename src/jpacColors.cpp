@@ -36,6 +36,9 @@ TColor * jpacPlot::jpacGold = new TColor(kjpacGold, 0.7372549019607844, 0.741176
 Int_t jpacPlot::kjpacAqua = TColor::GetFreeColorIndex();
 TColor * jpacPlot::jpacAqua = new TColor(kjpacAqua, 0.09019607843137255, 0.7450980392156863, 0.8117647058823529);
 
+Int_t jpacPlot::kjpacGrey = TColor::GetFreeColorIndex();
+TColor * jpacPlot::jpacGrey = new TColor(kjpacGrey, 0.4980392156862745, 0.4980392156862745, 0.4980392156862745);
+
 std::vector<Int_t> jpacPlot::jpacColors = {kjpacBlue, kjpacRed, kjpacGreen,
                                 kjpacOrange, kjpacPurple, kjpacBrown,
-                                kjpacPink, kjpacGold, kjpacAqua};
+                                kjpacPink, kjpacGold, kjpacAqua, kjpacGrey};

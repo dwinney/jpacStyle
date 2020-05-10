@@ -41,26 +41,26 @@ public:
     delete jpacStyle;
     delete jpacBlue, jpacRed, jpacGreen;
     delete jpacOrange, jpacPurple, jpacBrown;
-    delete jpacPink, jpacGold, jpacAqua;
+    delete jpacPink, jpacGold, jpacAqua, jpacGrey;
     delete logo, canvas;
   };
 
   static Int_t  kjpacBlue, kjpacRed, kjpacGreen,
                 kjpacOrange, kjpacPurple, kjpacBrown,
-                kjpacPink, kjpacGold, kjpacAqua;
+                kjpacPink, kjpacGold, kjpacAqua, kjpacGrey;
 
   static std::vector<Int_t> jpacColors;
 
   static TColor *jpacBlue, *jpacRed, *jpacGreen,
                 *jpacOrange, *jpacPurple, *jpacBrown,
-                *jpacPink, *jpacGold, *jpacAqua;
+                *jpacPink, *jpacGold, *jpacAqua, *jpacGrey;
 
   // Set all the style options
   TStyle* jpacStyle = new TStyle("jpacStyle", "JPAC Style");
   void SetStyle();
 
   // Stuff regarding the Logo
-  TCanvas* canvas = new TCanvas("canvas", "canvas");
+  TCanvas* canvas = new TCanvas("canvas", "canvas", 900, 600);
   TLatex* logo = NULL;
   void AddLogo();
 };
