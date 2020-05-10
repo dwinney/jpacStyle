@@ -20,7 +20,7 @@ include_directories("src")
 file(GLOB_RECURSE INC "include/*.hpp")
 file(GLOB_RECURSE SRC "src/*.cpp")
 
-add_library( libJpacStyle ${INC} ${SRC} )
+add_library(JpacStyle ${INC} ${SRC} )
 
 # GRAB EXECUTABLES
 include_directories("examples")
@@ -28,7 +28,7 @@ file(GLOB_RECURSE EXE_FILES "examples/*.cpp")
 foreach( exefile ${EXE_FILES} )
     get_filename_component( exename ${exefile} NAME_WE)
     add_executable( ${exename} ${exefile} )
-    target_link_libraries( ${exename} libJpacStyle)
+    target_link_libraries( ${exename} JpacStyle)
     target_link_libraries( ${exename} ${ROOT_LIBRARIES})
     target_link_libraries( ${exename} ${BOOST_LIBRARIES})
 endforeach( exefile ${EXE_FILES} )
