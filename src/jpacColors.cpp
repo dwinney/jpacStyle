@@ -43,7 +43,7 @@ std::vector<Int_t> jpacPlot::jpacColors = {kjpacBlue, kjpacRed, kjpacGreen,
                                 kjpacOrange, kjpacPurple, kjpacBrown,
                                 kjpacPink, kjpacGold, kjpacAqua, kjpacGrey};
 
-std::string jpacPlot::JPAC_BW = "#scale[1.3]{#font[72]{J}^{#font[112]{PAC}}}";
+std::string jpacPlot::JPAC_BW = "#scale[1.1]{#font[72]{J}^{#font[112]{PAC}}}";
 
 std::string jpacPlot::JPAC = "#scale[1.3]{#font[72]{#color[" + std::to_string(kjpacBlue) + "]{J}}"
                             + "^{#font[112]{" + "#color[" + std::to_string(kjpacBlue) + "]{P}"
