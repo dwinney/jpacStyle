@@ -16,29 +16,46 @@
 
 #include "Math/SpecFuncMathMore.h"
 #include "TMath.h"
-#include "TF1.h"
 
 int main()
 {
-  std::vector<double> x, b0, b1, b2;
-  for (int i = 0; i < 100; i++)
-  {
-    double x_i = double(i) * 20. / 100.;
-    double b0_i = ROOT::Math::cyl_bessel_j(0, x_i);
-    double b1_i = ROOT::Math::cyl_bessel_j(1, x_i);
-    double b2_i = ROOT::Math::cyl_bessel_j(2, x_i);
+  std::vector<double> x;
+  std::vector<std::vector<double>> bessels;
 
-    x.push_back(x_i);
-    b0.push_back(b0_i);
-    b1.push_back(b1_i);
-    b2.push_back(b2_i);
-  };
+  for (int alpha = 0; alpha < 10; alpha++)
+  {
+    std::vector<double> bx;
+    for (int i = 0; i < 100; i++)
+    {
+      double x_i = double(i) * 20. / 100.;
+      double bx_i = ROOT::Math::cyl_bessel_j(alpha, x_i);
+
+      if (alpha == 0)
+      {
+        x.push_back(x_i);
+      }
+
+      bx.push_back(bx_i);
+    }
+    bessels.push_back(bx);
+  }
 
   jpacGraph1D* plotter = new jpacGraph1D();
-  plotter->AddEntry(x, b0, "#alpha = 0");
-  plotter->AddEntry(x, b1, "#alpha = 1");
-  plotter->AddEntry(x, b2, "#alpha = 2");
+  for (int alpha = 0; alpha < bessels.size(); alpha++)
+  {
+    plotter->AddEntry(x, bessels[alpha], "#alpha=" + std::to_string(alpha+1));
+  }
 
+  // Choose the relative coordinates of the bottom right corner of legend
+  plotter->SetLegend(.45, .65);
+
+  // Set the label and range of x axis
+  plotter->SetXaxis("W  [GeV]", 0., 20.);
+
+  // Set the label and range of y axis
+  plotter->SetYaxis("d#sigma/dt  [nB/GeV^{2}]", -0.5, 1.);
+
+  // Print and pdf of the finished plot
   plotter->Plot("bessel.pdf");
 
   delete plotter;
