@@ -48,6 +48,14 @@ void jpacGraph1D::Plot(std::string filename)
       std::cout << "Warning! Number of curve greater than number of colors (9)! \n";
   }
 
+  // Force the canvas to be square
+  // Also make sure to give enough room for the axes labels
+  canvas->SetTopMargin(0.05);
+  canvas->SetRightMargin(0.05);
+  canvas->SetLeftMargin(0.17);
+  canvas->SetBottomMargin(0.12);
+  canvas->SetFixedAspectRatio();
+
   // Set up the Legend
   legend = new TLegend(xCord, yCord, xCord + .3, yCord + .15);
   legend->SetFillStyle(0);
@@ -98,4 +106,16 @@ void jpacGraph1D::Plot(std::string filename)
 
   legend->Draw();
   canvas->Print(filename.c_str());
+};
+
+// -----------------------------------------------------------------------------
+// Add the J^{PAC} logo in appropriate colors at the top right of the plot
+// Optional boolean argument to change whether black and white or incolors
+void jpacGraph1D::AddLogo()
+{
+  logo = new TLatex(.93, .9,  JPAC.c_str());
+  logo->SetNDC();
+  logo->SetTextSize(2/30.);
+  logo->SetTextAlign(32);
+  logo->Draw();
 };

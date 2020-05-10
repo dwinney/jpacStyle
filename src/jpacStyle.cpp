@@ -42,10 +42,10 @@ void jpacPlot::SetStyle()
   // Axis titles
   jpacStyle->SetNdivisions(5, "xy");
   jpacStyle->SetTitleSize(.045, "xyz");
-  jpacStyle->SetTitleOffset(1.0, "xyz");
+  jpacStyle->SetTitleOffset(1.2, "xyz");
 
   // More space for y-axis to avoid clashing with big numbers
-  jpacStyle->SetTitleOffset(1.2, "y");
+  jpacStyle->SetTitleOffset(1.8, "y");
 
   // This applies the same settings to the overall plot title
   jpacStyle->SetTitleSize(.055, "");
@@ -69,19 +69,23 @@ void jpacPlot::SetStyle()
 };
 
 // -----------------------------------------------------------------------------
-// Add the J^{PAC} logo in appropriate colors at the top right of the plot
-void jpacPlot::AddLogo()
+// Set up the color map for 2D plots
+void jpacPlot::Set2DPalette()
 {
-  std::string JPAC = "#scale[1.2]{#font[72]{#color[" + std::to_string(kjpacBlue) + "]{J}";
-  JPAC += "^{";
-  JPAC += "#color[" + std::to_string(kjpacBlue) + "]{P}";
-  JPAC += "#color[" + std::to_string(kjpacRed) + "]{A}";
-  JPAC += "#color[" + std::to_string(kjpacBlue) + "]{C}";
-  JPAC += "}}}";
+  Int_t NCont = 512;
+  gStyle->SetNumberContours(NCont);
+  Double_t Red[3]   = { 0.12156862745098039, 1.0,  0.8392156862745098};
+  Double_t Green[3] = { 0.4666666666666667, 1.0, 0.15294117647058825};
+  Double_t Blue[3]  = { 0.7058823529411765, 1.0, 0.1568627450980392};
 
-  logo = new TLatex(.88, .85,  JPAC.c_str());
-  logo->SetNDC();
-  logo->SetTextSize(2/30.);
-  logo->SetTextAlign(32);
-  logo->Draw();
+  Double_t Stops[3] = { 0.0, 0.5, 1.0 };
+  Int_t FI = TColor::CreateGradientColorTable(3, Stops, Red, Green, Blue, NCont);
+
+  Int_t jpac3D[NCont];
+  for (int i=0; i < NCont; i++)
+  {
+    jpac3D[i] = FI+i;
+  }
+
+  jpacStyle->SetPalette(NCont, jpac3D);
 };

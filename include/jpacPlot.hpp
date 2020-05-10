@@ -25,6 +25,7 @@ public:
   jpacPlot()
   {
     SetStyle();
+    Set2DPalette();
   };
 
   ~jpacPlot()
@@ -33,7 +34,7 @@ public:
     delete jpacBlue, jpacRed, jpacGreen;
     delete jpacOrange, jpacPurple, jpacBrown;
     delete jpacPink, jpacGold, jpacAqua, jpacGrey;
-    delete logo, canvas;
+    delete canvas;
   };
 
   static Int_t  kjpacBlue, kjpacRed, kjpacGreen,
@@ -46,14 +47,17 @@ public:
                 *jpacOrange, *jpacPurple, *jpacBrown,
                 *jpacPink, *jpacGold, *jpacAqua, *jpacGrey;
 
+  static std::string JPAC, JPAC_BW;
+
   // Set all the style options
   TStyle* jpacStyle = new TStyle("jpacStyle", "JPAC Style");
   void SetStyle();
 
   // Stuff regarding the Logo
-  TCanvas* canvas = new TCanvas("canvas", "canvas", 900, 600);
-  TLatex* logo = NULL;
-  void AddLogo();
+  TCanvas* canvas = new TCanvas("canvas", "canvas", 600, 600);
+
+  // For the 2D contour plots
+  void Set2DPalette();
 };
 
 #endif

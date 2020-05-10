@@ -28,7 +28,7 @@ public:
     {
       delete std::get<0>(entries[i]);
     }
-    delete legend;
+    delete legend, logo;
   };
 
   // Take in x and f(x) values as a vector and a legend entry
@@ -56,6 +56,9 @@ private:
   bool xCustom = false, yCustom = false;
   std::string xLabel = "", yLabel = "";
   double xlow, xhigh, ylow, yhigh;
+
+  void AddLogo();
+  TLatex* logo = NULL;
 
   // Entries are saved in tuples with their legend title as a string
   std::vector<std::tuple<TGraph*, std::string>> entries;
