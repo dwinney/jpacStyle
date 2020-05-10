@@ -59,3 +59,7 @@ my_2Dplotter->SetYaxis(string, double, double);
 ```
 ### importStyle.C
 Alternatively if you want to make the plots manually through ROOT, this macro imports the jpacStyle and jpacColors. Also adds a function `AddLogo()` which adds the collaboration logo in the upper right corner.
+Simply load when opening ROOT:
+```
+root -l importStyle.C
+```
