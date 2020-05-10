@@ -1,5 +1,5 @@
 # jpacStyle
-Library for making plots in C++/ROOT for the JPAC Collaboration.
+Library for making plots in C++/[ROOT](https://root.cern/) for the JPAC Collaboration.
 
 Compile the library with the following command:
 ```
@@ -24,7 +24,7 @@ my_plotter->AddEntry(vector<double>, vector<double>, string);
 // Plot to file
 my_plotter->Plot(string);
 ```
-You can add multiple "entries"! Up to 10, because we only have 10 colors defined.
+You can add multiple curves (up to 10, because we only have 10 colors defined).
 
 Additional customization can be set up with the previous functions before plotting:
 ```
@@ -35,3 +35,4 @@ my_plotter->SetLegend(double, double);
 my_plotter->SetXaxis(string, double, double);
 my_plotter->SetYaxis(string, double, double);
 ```
+Axes labels are TLatex objects and thus follow the same syntax for mathematical symbols (see [doc](https://root.cern.ch/doc/master/classTLatex.html)).
