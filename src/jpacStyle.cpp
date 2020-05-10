@@ -37,25 +37,26 @@ void jpacPlot::SetStyle()
 
   // No border on legends
   jpacStyle->SetLegendBorderSize(0);
-  jpacStyle->SetLegendTextSize(0.03);
+  jpacStyle->SetLegendTextSize(0.04);
 
   // Axis titles
-  jpacStyle->SetTitleSize(.055, "xyz");
-  jpacStyle->SetTitleOffset(.8, "xyz");
+  jpacStyle->SetNdivisions(5, "xy");
+  jpacStyle->SetTitleSize(.045, "xyz");
+  jpacStyle->SetTitleOffset(1.0, "xyz");
 
   // More space for y-axis to avoid clashing with big numbers
-  jpacStyle->SetTitleOffset(.9, "y");
+  jpacStyle->SetTitleOffset(1.2, "y");
 
   // This applies the same settings to the overall plot title
   jpacStyle->SetTitleSize(.055, "");
   jpacStyle->SetTitleOffset(.8, "");
 
   // Axis labels (numbering)
-  jpacStyle->SetLabelSize(.04, "xyz");
-  jpacStyle->SetLabelOffset(.005, "xyz");
+  jpacStyle->SetLabelSize(.035, "xyz");
+  jpacStyle->SetLabelOffset(.01, "xyz");
 
 
-  const int kjpacFont = 42;
+  const int kjpacFont = 82;
   jpacStyle->SetStatFont(kjpacFont);
   jpacStyle->SetLabelFont(kjpacFont, "xyz");
   jpacStyle->SetTitleFont(kjpacFont, "xyz");
@@ -71,12 +72,12 @@ void jpacPlot::SetStyle()
 // Add the J^{PAC} logo in appropriate colors at the top right of the plot
 void jpacPlot::AddLogo()
 {
-  std::string JPAC = "#font[72]{#color[" + std::to_string(kjpacBlue) + "]{J}";
+  std::string JPAC = "#scale[1.2]{#font[72]{#color[" + std::to_string(kjpacBlue) + "]{J}";
   JPAC += "^{";
   JPAC += "#color[" + std::to_string(kjpacBlue) + "]{P}";
   JPAC += "#color[" + std::to_string(kjpacRed) + "]{A}";
   JPAC += "#color[" + std::to_string(kjpacBlue) + "]{C}";
-  JPAC += "}}";
+  JPAC += "}}}";
 
   logo = new TLatex(.88, .85,  JPAC.c_str());
   logo->SetNDC();
