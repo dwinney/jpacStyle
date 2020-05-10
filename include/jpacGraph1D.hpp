@@ -11,6 +11,8 @@
 #include "jpacPlot.hpp"
 
 #include <TLegend.h>
+#include <TGraph.h>
+#include <TAxis.h>
 #include <tuple>
 
 class jpacGraph1D : public jpacPlot

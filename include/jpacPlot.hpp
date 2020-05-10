@@ -8,22 +8,13 @@
 #ifndef _JPAC_STYLE_
 #define _JPAC_STYLE_
 
-#include <complex>
-#include <vector>
-#include <iterator>
-#include <cmath>
 #include <iostream>
-#include <fstream>
+#include <vector>
 #include <string>
 
 #include <TROOT.h>
-#include <TImage.h>
-#include <TColor.h>
-#include <TH2.h>
-#include <TGraph2D.h>
 #include <TCanvas.h>
-#include <TGraph.h>
-#include <TLegend.h>
+#include <TColor.h>
 #include <TStyle.h>
 #include <TError.h>
 #include <TLatex.h>
