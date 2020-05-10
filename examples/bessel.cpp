@@ -47,7 +47,7 @@ int main()
   }
 
   // Choose the relative coordinates of the bottom right corner of legend
-  plotter->SetLegend(.45, .75);
+  plotter->SetLegend(.45, .70);
 
   // Set the label and range of x axis
   plotter->SetXaxis("W  [GeV]", 0., 20.);
