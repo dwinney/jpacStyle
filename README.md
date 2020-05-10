@@ -1,5 +1,14 @@
 # jpacStyle
-Library for making plots in C++/ROOT for the JPAC Collaboration
+Library for making plots in C++/ROOT for the JPAC Collaboration.
+
+Compile the library with the following command:
+```
+mkdir build
+cd build
+cmake ..
+make
+```
+This will make `libJpacStyle.a` in the build directory which can be linked to other code to have access to the header files.
 
 ### jpacGraph1D
 This object allows you to easily make one-dimensional plots according to the style and with minimal ROOT syntax.
