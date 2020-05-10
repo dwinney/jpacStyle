@@ -36,3 +36,6 @@ my_plotter->SetXaxis(string, double, double);
 my_plotter->SetYaxis(string, double, double);
 ```
 Axes labels are TLatex objects and thus follow the same syntax for mathematical symbols (see [doc](https://root.cern.ch/doc/master/classTLatex.html)).
+
+### importStyle.C
+Alternatively if you want to make the plots manually through ROOT, this macro imports the jpacStyle and jpacColors. Also adds a function `AddLogo()` which adds the collaboration logo in the upper right corner.
