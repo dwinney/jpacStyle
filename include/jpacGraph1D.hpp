@@ -26,7 +26,6 @@ public:
     {
       delete std::get<0>(entries[i]);
     }
-
     delete legend;
   };
 
@@ -36,9 +35,26 @@ public:
   // Plot all the saved entries and print to file given by filename
   void Plot(std::string filename);
 
-private:
+  // Set label and range for x axis
+  void SetXaxis(std::string label, double low = 0., double high = 0.);
+  void SetYaxis(std::string label, double low = 0., double high = 0.);
 
+  // Set up the Legend
+  void SetLegend(double xx, double yy)
+  {
+    xCord = xx; yCord = yy;
+  };
+
+private:
+  // Legend Parameters
   TLegend * legend = NULL;
+  double xCord, yCord;
+
+  // Axes Parameters
+  bool xCustom = false, yCustom = false;
+  std::string xLabel = "", yLabel = "";
+  double xlow, xhigh, ylow, yhigh;
+
   // Entries are saved in tuples with their legend title as a string
   std::vector<std::tuple<TGraph*, std::string>> entries;
 };

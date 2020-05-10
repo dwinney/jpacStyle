@@ -17,19 +17,70 @@ void jpacGraph1D::AddEntry(std::vector<double> xs, std::vector<double> fxs, std:
 };
 
 // -----------------------------------------------------------------------------
+// Set the axes
+void jpacGraph1D::SetXaxis(std::string label, double low, double high)
+{
+  xLabel = label;
+
+  if (std::abs(low) > 0.000001 || std::abs(high) > 0.000001)
+  {
+    xlow = low; xhigh = high;
+    xCustom = true;
+  }
+};
+
+void jpacGraph1D::SetYaxis(std::string label, double low, double high)
+{
+  yLabel = label;
+  if (std::abs(low) > 0.000001 || std::abs(high) > 0.000001)
+  {
+    ylow = low; yhigh = high;
+    yCustom = true;
+  }
+};
+
+// -----------------------------------------------------------------------------
 // Plot all the saved entries and print to file given by filename
 void jpacGraph1D::Plot(std::string filename)
 {
+  if (entries.size() > 10)
+  {
+      std::cout << "Warning! Number of curve greater than number of colors (9)! \n";
+  }
 
-  legend = new TLegend();
+  // Set up the Legend
+  legend = new TLegend(xCord, yCord, xCord + .3, yCord + .15);
   legend->SetFillStyle(0);
+  if (entries.size() > 4)
+  {
+    legend->SetNColumns(2);
+  }
 
   // Draw the first entry
+  std::get<0>(entries[0])->UseCurrentStyle();
   std::get<0>(entries[0])->SetTitle("");
   std::get<0>(entries[0])->SetLineWidth(3);
   std::get<0>(entries[0])->SetLineColor(jpacColors[0]);
-  std::get<0>(entries[0])->Draw("AL");
 
+  // Set up the axes
+  TAxis* xAxis = std::get<0>(entries[0])->GetXaxis();
+  xAxis->SetTitle(xLabel.c_str());
+  xAxis->CenterTitle(true);
+  if (xCustom == true)
+  {
+    xAxis->SetRangeUser(xlow, xhigh);
+  }
+
+  TAxis* yAxis = std::get<0>(entries[0])->GetYaxis();
+  yAxis->SetTitle(yLabel.c_str());
+  yAxis->CenterTitle(true);
+  if (yCustom == true)
+  {
+    yAxis->SetRangeUser(ylow, yhigh);
+  }
+
+  // Draw the first curve
+  std::get<0>(entries[0])->Draw("AL");
   legend->AddEntry(std::get<0>(entries[0]), std::get<1>(entries[0]).c_str(), "l");
 
   // Add the logo
