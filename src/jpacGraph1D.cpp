@@ -113,7 +113,7 @@ void jpacGraph1D::Plot(std::string filename)
 // Optional boolean argument to change whether black and white or incolors
 void jpacGraph1D::AddLogo()
 {
-  logo = new TLatex(.93, .9,  JPAC.c_str());
+  logo = new TLatex(.93, .89,  JPAC.c_str());
   logo->SetNDC();
   logo->SetTextSize(2/30.);
   logo->SetTextAlign(32);
