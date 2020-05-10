@@ -37,7 +37,7 @@ void jpacPlot::SetStyle()
 
   // No border on legends
   jpacStyle->SetLegendBorderSize(0);
-  jpacStyle->SetLegendTextSize(0.04);
+  jpacStyle->SetLegendTextSize(0.03);
 
   // Axis titles
   jpacStyle->SetNdivisions(506, "xy");
