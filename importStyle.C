@@ -43,6 +43,8 @@ void importStyle()
 {
   TStyle* jpacStyle = new TStyle("jpacStyle", "JPAC Style");
 
+  gErrorIgnoreLevel = kWarning;
+
   // remove info box
   jpacStyle->SetOptStat(0);
 
@@ -70,12 +72,12 @@ void importStyle()
   jpacStyle->SetLegendTextSize(0.04);
 
   // Axis titles
-  jpacStyle->SetNdivisions(5, "xy");
+  jpacStyle->SetNdivisions(506, "xy");
   jpacStyle->SetTitleSize(.045, "xyz");
-  jpacStyle->SetTitleOffset(1.0, "xyz");
+  jpacStyle->SetTitleOffset(1.2, "xyz");
 
   // More space for y-axis to avoid clashing with big numbers
-  jpacStyle->SetTitleOffset(1.2, "y");
+  jpacStyle->SetTitleOffset(1.8, "y");
 
   // This applies the same settings to the overall plot title
   jpacStyle->SetTitleSize(.055, "");
@@ -85,6 +87,12 @@ void importStyle()
   jpacStyle->SetLabelSize(.035, "xyz");
   jpacStyle->SetLabelOffset(.01, "xyz");
 
+  // Thicker lines
+  jpacStyle->SetFrameLineWidth(2);
+
+  // Set the tick mark style
+  jpacStyle->SetPadTickX(1);
+  jpacStyle->SetPadTickY(1);
 
   const int kjpacFont = 82;
   jpacStyle->SetStatFont(kjpacFont);
@@ -93,6 +101,15 @@ void importStyle()
   jpacStyle->SetTitleFont(kjpacFont, ""); // Apply same setting to plot titles
   jpacStyle->SetTextFont(kjpacFont);
   jpacStyle->SetLegendFont(kjpacFont);
+
+  const Int_t NCont = 512;
+  Double_t Red[3]   = { 0.12156862745098039, 1.0,  0.8392156862745098};
+  Double_t Green[3] = { 0.4666666666666667, 1.0, 0.15294117647058825};
+  Double_t Blue[3]  = { 0.7058823529411765, 1.0, 0.1568627450980392};
+
+  Double_t Stops[3] = { 0.0, 0.5, 1.0 };
+  TColor::CreateGradientColorTable(3, Stops, Red, Green, Blue, NCont);
+  jpacStyle->SetNumberContours(NCont);
 
   // Make it the global default style
   gROOT->SetStyle("jpacStyle");
@@ -115,5 +132,7 @@ void AddLogo()
   logo->SetTextAlign(32);
   logo->Draw();
 };
+
+
 
 #endif
