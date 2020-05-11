@@ -17,6 +17,12 @@ void jpacGraph1D::AddEntry(std::vector<double> xs, std::vector<double> fxs, std:
 };
 
 // -----------------------------------------------------------------------------
+// Toggle legAdd which if false wont draw a legend at all
+void jpacGraph1D::SetLegend(bool ifremove)
+{
+  legAdd = ifremove;
+};
+
 // Flip legCustom to true, indicate that we want manual placement of legend
 void jpacGraph1D::SetLegend(double xx, double yy)
 {
@@ -108,6 +114,9 @@ void jpacGraph1D::Plot(std::string filename)
     legend->AddEntry(std::get<0>(entries[i]), std::get<1>(entries[i]).c_str(), "l");
   };
 
-  legend->Draw();
+  if (legAdd == true)
+  {
+    legend->Draw();
+  }
   canvas->Print(filename.c_str());
 };

@@ -40,15 +40,23 @@ int main()
     bessels.push_back(bx);
   }
 
-  jpacGraph1D* plotter = new jpacGraph1D();
-  for (int alpha = 0; alpha < bessels.size(); alpha++)
+  // Initialize the plotting object
+  // Can be initialized empty or with the first curve
+  jpacGraph1D* plotter = new jpacGraph1D(x, bessels[0], "#alpha=1");
+  // jpacGraph1D* plotter = new jpacGraph1D();
+
+  //Add additional curves using AddEntry
+  for (int alpha = 1; alpha < bessels.size(); alpha++)
   {
     plotter->AddEntry(x, bessels[alpha], "#alpha=" + std::to_string(alpha+1));
   }
 
   // Choose the relative coordinates of the bottom right corner of legend
-  // Comment if you prefer to let ROOT auto-place
+  // Without defining explicit coordinates will default to ROOT autoplacement
   plotter->SetLegend(.45, .70);
+
+  // Alternatively choose to not have a legend at all
+  // plotter->SetLegend(false);
 
   // Set the label and range of x axis
   plotter->SetXaxis("W  [GeV]", 0., 20.);

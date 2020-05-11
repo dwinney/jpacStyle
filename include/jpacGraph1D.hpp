@@ -18,8 +18,15 @@
 class jpacGraph1D : public jpacPlotter
 {
 public:
+  // Default Constructor
   jpacGraph1D()
   {};
+
+  // Parameterized constructor useful for if only one curve
+  jpacGraph1D(std::vector<double> xs, std::vector<double> fxs, std::string name)
+  {
+    AddEntry(xs, fxs, name);
+  };
 
   ~jpacGraph1D()
   {
@@ -35,6 +42,7 @@ public:
   void AddEntry(std::vector<double> xs, std::vector<double> fxs, std::string name);
 
   // Set up the Legend
+  void SetLegend(bool ifremove);
   void SetLegend(double xx, double yy);
 
   // Plot to file
@@ -44,7 +52,7 @@ private:
   // Legend Parameters
   TLegend * legend = NULL;
   double xCord, yCord;
-  bool legCustom = false;
+  bool legCustom = false, legAdd = true;
 
   // Position the logo in to top right
   void AddLogo();
