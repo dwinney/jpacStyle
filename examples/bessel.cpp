@@ -42,13 +42,13 @@ int main()
 
   // Initialize the plotting object
   // Can be initialized empty or with the first curve
-  jpacGraph1D* plotter = new jpacGraph1D(x, bessels[0], "#alpha=1");
+  jpacGraph1D* plotter = new jpacGraph1D(x, bessels[0], "#alpha = 1");
   // jpacGraph1D* plotter = new jpacGraph1D();
 
   //Add additional curves using AddEntry
   for (int alpha = 1; alpha < bessels.size(); alpha++)
   {
-    plotter->AddEntry(x, bessels[alpha], "#alpha=" + std::to_string(alpha+1));
+    plotter->AddEntry(x, bessels[alpha], "#alpha = " + std::to_string(alpha+1));
   }
 
   // Choose the relative coordinates of the bottom right corner of legend
@@ -59,10 +59,11 @@ int main()
   // plotter->SetLegend(false);
 
   // Set the label and range of x axis
-  plotter->SetXaxis("W  [GeV]", 0., 20.);
+  // Font 12 is italics
+  plotter->SetXaxis("#font[12]{W}  (GeV)", 0., 20.);
 
   // Set the label and range of y axis
-  plotter->SetYaxis("d#sigma/dt  [nB/GeV^{2}]", -0.5, 1.);
+  plotter->SetYaxis("#font[12]{d#sigma/dt}  (#font[12]{nB/} GeV^{2})", -0.5, 1.);
 
   // Print and pdf of the finished plot
   plotter->Plot("bessel.pdf");

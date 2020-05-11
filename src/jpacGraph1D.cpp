@@ -54,7 +54,7 @@ void jpacGraph1D::Plot(std::string filename)
   // Also make sure to give enough room for the axes labels
   canvas->SetTopMargin(0.05);
   canvas->SetRightMargin(0.05);
-  canvas->SetLeftMargin(0.17);
+  canvas->SetLeftMargin(0.14);
   canvas->SetBottomMargin(0.12);
   canvas->SetFixedAspectRatio();
 
