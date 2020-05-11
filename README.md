@@ -37,6 +37,9 @@ my_1Dplotter->SetYaxis(string, double, double);
 ```
 Axes labels are TLatex objects and thus follow the same syntax for mathematical symbols (see [doc](https://root.cern.ch/doc/master/classTLatex.html)).
 
+### jpacGraph1Dc
+This is operates nearly identical to the above but allows for plotting the Real and Imaginary parts of a complex valued function at the same time. All the functions available in `jpacGraph1D` are present here except all with the possibility of accepting `vector< complex<double> >`. 
+
 ### jpacGraph2D
 This object allows yo uto make two-dimensional plots according to JPAC color scheme with minimal ROOT interfacing.
 
