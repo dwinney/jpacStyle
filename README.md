@@ -65,7 +65,7 @@ As above, additional customization of the axes is available through:
 my_2Dplotter->SetXaxis(string, double, double);
 my_2Dplotter->SetYaxis(string, double, double);
 ```
-See the example executable [exp_xy.cpp](./examples/exp_xy.cpp).
+See the example executable [2dgaussian.cpp](./examples/2dgaussian.cpp).
 
 ### importStyle.C
 Alternatively if you want to make the plots manually through ROOT, this macro imports the jpacStyle and jpacColors. Also adds a function `AddLogo()` which adds the collaboration logo in the upper right corner.

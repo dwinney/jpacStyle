@@ -45,7 +45,7 @@ int main()
   plotter->SetYaxis("y", -1., 1.);
 
   // Print and pdf of the finished plot
-  plotter->Plot("exp_xy.pdf");
+  plotter->Plot("2dgaussian.pdf");
 
   delete plotter;
   return 1.;
