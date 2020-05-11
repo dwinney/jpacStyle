@@ -79,7 +79,7 @@ void jpacGraph1Dc::AddEntry(std::vector<double> xs, std::vector<std::complex<dou
 // Also add labels for Real and imaginary part
 void jpacGraph1Dc::AddLogo()
 {
-  logo = new TLatex(.93, .89,  JPAC.c_str());
+  logo = new TLatex(.92, .87,  JPAC_BIG.c_str());
   logo->SetNDC();
   logo->SetTextSize(2/30.);
   logo->SetTextAlign(32);
@@ -117,13 +117,13 @@ void jpacGraph1Dc::Plot(std::string filename)
   }
 
   // Set up the margins of both canvases
-  canvas->cd(1)->SetTopMargin(0.05);
+  canvas->cd(1)->SetTopMargin(0.04);
   canvas->cd(1)->SetRightMargin(0.05);
   canvas->cd(1)->SetLeftMargin(0.09);
   canvas->cd(1)->SetBottomMargin(0.12);
   canvas->cd(1)->SetFixedAspectRatio();
 
-  canvas->cd(2)->SetTopMargin(0.05);
+  canvas->cd(2)->SetTopMargin(0.04);
   canvas->cd(2)->SetRightMargin(0.05);
   canvas->cd(2)->SetLeftMargin(0.09);
   canvas->cd(2)->SetBottomMargin(0.12);

@@ -23,8 +23,9 @@ public:
   jpacGraph1Dc()
   {
     canvas->Divide(1,2, 0.01, 0.005);
-    jpacStyle->SetTitleOffset(0.8, "y");
-
+    jpacStyle->SetTitleOffset(0.7, "y");
+    jpacStyle->SetLabelSize(.05, "xyz");
+    jpacStyle->SetTitleSize(.055, "xyz");
   };
 
   // Quick parameterized Constructor
@@ -32,6 +33,8 @@ public:
   {
     canvas->Divide(1,2, 0.01, 0.005);
     jpacStyle->SetTitleOffset(0.8, "y");
+    jpacStyle->SetLabelSize(.05, "xyz");
+    jpacStyle->SetTitleSize(.055, "xyz");
 
     AddEntry(xs, fxs, name);
   };

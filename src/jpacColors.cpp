@@ -50,3 +50,9 @@ std::string jpacPlotter::JPAC = "#scale[1.3]{#font[32]{#color[" + std::to_string
                             + "#color[" + std::to_string(kjpacRed) + "]{A}"
                             + "#color[" + std::to_string(kjpacBlue) + "]{C}"
                             + "}}}}";
+
+std::string jpacPlotter::JPAC_BIG = "#scale[1.8]{#font[32]{#color[" + std::to_string(kjpacBlue) + "]{J}"
+                          + "^{#scale[.7]{" + "#color[" + std::to_string(kjpacBlue) + "]{P}"
+                          + "#color[" + std::to_string(kjpacRed) + "]{A}"
+                          + "#color[" + std::to_string(kjpacBlue) + "]{C}"
+                          + "}}}}";

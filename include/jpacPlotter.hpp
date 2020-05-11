@@ -47,7 +47,7 @@ public:
                 *jpacOrange, *jpacPurple, *jpacBrown,
                 *jpacPink, *jpacGold, *jpacAqua, *jpacGrey;
 
-  static std::string JPAC, JPAC_BW;
+  static std::string JPAC, JPAC_BW, JPAC_BIG;
 
   // Set all the style options
   TStyle* jpacStyle = new TStyle("jpacStyle", "JPAC Style");
