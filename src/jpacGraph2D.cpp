@@ -9,7 +9,7 @@
 
 // -----------------------------------------------------------------------------
 // Import the x, y, and z data to plot
-void SetData(std::vector<double> x, std::vector<double> y, std::vector<double> z)
+void jpacGraph2D::SetData(std::vector<double> x, std::vector<double> y, std::vector<double> z)
 {
   data = new TGraph2D(x.size(), &(x[0]), &(y[0]), &(z[0]));
 };
