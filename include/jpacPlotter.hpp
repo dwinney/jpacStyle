@@ -19,22 +19,22 @@
 #include <TError.h>
 #include <TLatex.h>
 
-class jpacPlot
+class jpacPlotter
 {
 public:
-  jpacPlot()
+  jpacPlotter()
   {
     SetStyle();
     Set2DPalette();
   };
 
-  ~jpacPlot()
+  ~jpacPlotter()
   {
     delete jpacStyle;
     delete jpacBlue, jpacRed, jpacGreen;
     delete jpacOrange, jpacPurple, jpacBrown;
     delete jpacPink, jpacGold, jpacAqua, jpacGrey;
-    delete canvas;
+    delete canvas, logo;
   };
 
   static Int_t  kjpacBlue, kjpacRed, kjpacGreen,
@@ -58,6 +58,24 @@ public:
 
   // For the 2D contour plots
   void Set2DPalette();
+
+  // Axes Parameters
+  bool xCustom = false, yCustom = false;
+  std::string xLabel = "", yLabel = "";
+  double xlow, xhigh, ylow, yhigh;
+
+  // Set label and range for x axis
+  void SetXaxis(std::string label, double low, double high);
+  void SetYaxis(std::string label, double low, double high);
+
+  // Plot all the saved entries and print to file given by filename
+  // This will depend on specific implementation and needs to be overridden
+  virtual void Plot(std::string filename) = 0;
+
+  // Place the logo in the top right corner
+  // Specific locations will depend on specific implementation
+  TLatex* logo = NULL;
+  virtual void AddLogo() = 0;
 };
 
 #endif

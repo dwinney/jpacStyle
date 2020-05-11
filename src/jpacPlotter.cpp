@@ -5,11 +5,11 @@
 // Email:        dwinney@iu.edu
 // -----------------------------------------------------------------------------
 
-#include "jpacPlot.hpp"
+#include "jpacPlotter.hpp"
 
 // -----------------------------------------------------------------------------
 // All other noncolor settings
-void jpacPlot::SetStyle()
+void jpacPlotter::SetStyle()
 {
   gErrorIgnoreLevel = kWarning;
 
@@ -77,7 +77,7 @@ void jpacPlot::SetStyle()
 
 // -----------------------------------------------------------------------------
 // Set up the color map for 2D plots
-void jpacPlot::Set2DPalette()
+void jpacPlotter::Set2DPalette()
 {
   Int_t NCont = 999;
   Double_t Red[3]   = { 0.12156862745098039, 1.0,  0.8392156862745098};
@@ -95,4 +95,27 @@ void jpacPlot::Set2DPalette()
 
   jpacStyle->SetPalette(NCont, jpac3D);
   jpacStyle->SetNumberContours(NCont);
+};
+
+// -----------------------------------------------------------------------------
+// Set the axes
+void jpacPlotter::SetXaxis(std::string label, double low, double high)
+{
+  xLabel = label;
+
+  if (std::abs(low) > 0.000001 || std::abs(high) > 0.000001)
+  {
+    xlow = low; xhigh = high;
+    xCustom = true;
+  }
+};
+
+void jpacPlotter::SetYaxis(std::string label, double low, double high)
+{
+  yLabel = label;
+  if (std::abs(low) > 0.000001 || std::abs(high) > 0.000001)
+  {
+    ylow = low; yhigh = high;
+    yCustom = true;
+  }
 };

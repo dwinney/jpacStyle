@@ -8,7 +8,7 @@
 #ifndef _JPAC_2D_
 #define _JPAC_2D_
 
-#include "jpacPlot.hpp"
+#include "jpacPlotter.hpp"
 
 #include <TLegend.h>
 #include <TGraph2D.h>
@@ -16,16 +16,14 @@
 #include <TAxis.h>
 #include <tuple>
 
-class jpacGraph2D : public jpacPlot
+class jpacGraph2D : public jpacPlotter
 {
 public:
-  jpacGraph2D()
-  : jpacPlot()
-  {};
+  jpacGraph2D(){};
 
   ~jpacGraph2D()
   {
-    delete logo;
+    delete data;
   };
 
   // Add in the data as vectors
@@ -34,22 +32,17 @@ public:
     data = new TGraph2D(x.size(), &(x[0]), &(y[0]), &(z[0]));
   };
 
-  void SetXaxis(std::string label, double min = 0., double max = 0.);
-  void SetYaxis(std::string label, double min = 0., double max = 0.);
+  // Set up the Legend
+  void SetLegend(double xx, double yy);
 
-  // Plot all the saved entries and print to file given by filename
+  // Plot to file
   void Plot(std::string filename);
 
 private:
   TGraph2D * data = NULL;
 
-  // Axes Parameters
-  bool xCustom = false, yCustom = false;
-  std::string xLabel = "", yLabel = "";
-  double xlow, xhigh, ylow, yhigh;
-
+  // Position the logo in to top right
   void AddLogo();
-  TLatex* logo = NULL;
 };
 
 #endif

@@ -8,29 +8,6 @@
 #include "jpacGraph2D.hpp"
 
 // -----------------------------------------------------------------------------
-// Set the axes
-void jpacGraph2D::SetXaxis(std::string label, double low, double high)
-{
-  xLabel = label;
-
-  if (std::abs(low) > 0.000001 || std::abs(high) > 0.000001)
-  {
-    xlow = low; xhigh = high;
-    xCustom = true;
-  }
-};
-
-void jpacGraph2D::SetYaxis(std::string label, double low, double high)
-{
-  yLabel = label;
-  if (std::abs(low) > 0.000001 || std::abs(high) > 0.000001)
-  {
-    ylow = low; yhigh = high;
-    yCustom = true;
-  }
-};
-
-// -----------------------------------------------------------------------------
 // Add the J^{PAC} logo in black and white in top right corner
 void jpacGraph2D::AddLogo()
 {
@@ -40,7 +17,6 @@ void jpacGraph2D::AddLogo()
   logo->SetTextAlign(32);
   logo->Draw();
 };
-
 
 // -----------------------------------------------------------------------------
 void jpacGraph2D::Plot(std::string filename)

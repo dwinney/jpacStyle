@@ -47,6 +47,7 @@ int main()
   }
 
   // Choose the relative coordinates of the bottom right corner of legend
+  // Comment if you prefer to let ROOT auto-place
   plotter->SetLegend(.45, .70);
 
   // Set the label and range of x axis
@@ -57,6 +58,9 @@ int main()
 
   // Print and pdf of the finished plot
   plotter->Plot("bessel.pdf");
+
+  // Any of ROOT's TGraph->Print outputs are available by changing filename extension
+  // plotter->Plot("bessel.eps");
 
   delete plotter;
   return 1.;

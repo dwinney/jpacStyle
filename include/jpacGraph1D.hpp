@@ -8,17 +8,17 @@
 #ifndef _JPAC_1D_
 #define _JPAC_1D_
 
-#include "jpacPlot.hpp"
+#include "jpacPlotter.hpp"
 
 #include <TLegend.h>
 #include <TGraph.h>
 #include <TAxis.h>
 #include <tuple>
 
-class jpacGraph1D : public jpacPlot
+class jpacGraph1D : public jpacPlotter
 {
 public:
-  jpacGraph1D() : jpacPlot()
+  jpacGraph1D()
   {};
 
   ~jpacGraph1D()
@@ -34,31 +34,20 @@ public:
   // Take in x and f(x) values as a vector and a legend entry
   void AddEntry(std::vector<double> xs, std::vector<double> fxs, std::string name);
 
-  // Plot all the saved entries and print to file given by filename
-  void Plot(std::string filename);
-
-  // Set label and range for x axis
-  void SetXaxis(std::string label, double low = 0., double high = 0.);
-  void SetYaxis(std::string label, double low = 0., double high = 0.);
-
   // Set up the Legend
-  void SetLegend(double xx, double yy)
-  {
-    xCord = xx; yCord = yy;
-  };
+  void SetLegend(double xx, double yy);
+
+  // Plot to file
+  void Plot(std::string filename);
 
 private:
   // Legend Parameters
   TLegend * legend = NULL;
   double xCord, yCord;
+  bool legCustom = false;
 
-  // Axes Parameters
-  bool xCustom = false, yCustom = false;
-  std::string xLabel = "", yLabel = "";
-  double xlow, xhigh, ylow, yhigh;
-
+  // Position the logo in to top right
   void AddLogo();
-  TLatex* logo = NULL;
 
   // Entries are saved in tuples with their legend title as a string
   std::vector<std::tuple<TGraph*, std::string>> entries;
