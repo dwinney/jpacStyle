@@ -35,9 +35,6 @@ public:
 
   // Add in the data as vectors
   void SetData(std::vector<double> x, std::vector<double> y, std::vector<double> z)
-  {
-    data = new TGraph2D(x.size(), &(x[0]), &(y[0]), &(z[0]));
-  };
 
   // Set up the Legend
   void SetLegend(double xx, double yy);
@@ -46,6 +43,7 @@ public:
   void Plot(std::string filename);
 
 private:
+  // The actual ROOT object being called
   TGraph2D * data = NULL;
 
   // Position the logo in to top right

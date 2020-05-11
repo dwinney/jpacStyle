@@ -8,6 +8,13 @@
 #include "jpacGraph2D.hpp"
 
 // -----------------------------------------------------------------------------
+// Import the x, y, and z data to plot
+void SetData(std::vector<double> x, std::vector<double> y, std::vector<double> z)
+{
+  data = new TGraph2D(x.size(), &(x[0]), &(y[0]), &(z[0]));
+};
+
+// -----------------------------------------------------------------------------
 // Add the J^{PAC} logo in black and white in top right corner
 void jpacGraph2D::AddLogo()
 {
@@ -19,6 +26,7 @@ void jpacGraph2D::AddLogo()
 };
 
 // -----------------------------------------------------------------------------
+// Plot to file
 void jpacGraph2D::Plot(std::string filename)
 {
   // Force the canvas to be square
