@@ -49,6 +49,9 @@ public:
   // Take in x and f(x) values as a vector and a legend entry
   void AddEntry(std::vector<double> xs, std::vector<double> fxs, std::string name);
 
+  // Clear all added entries
+  void ClearData();
+
   // Set up the Legend
   void SetLegend(bool ifremove);
   void SetLegend(double xx, double yy);
