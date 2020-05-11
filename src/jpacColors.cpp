@@ -8,6 +8,23 @@
 #include "jpacPlotter.hpp"
 
 // -----------------------------------------------------------------------------
+// Functions to italicize and bold
+std::string ROOT_italics(std::string in)
+{
+  return "#font[12]{" + in + "}";
+};
+
+std::string ROOT_bold(std::string in)
+{
+  return "#font[22]{" + in + "}";
+};
+
+std::string ROOT_bold_italics(std::string in)
+{
+  return "#font[32]{" + in + "}";
+};
+
+// -----------------------------------------------------------------------------
 // JPAC Color Palette
 Int_t jpacPlotter::kjpacBlue = TColor::GetFreeColorIndex();
 TColor * jpacPlotter::jpacBlue = new TColor(kjpacBlue, 0.12156862745098039, 0.4666666666666667, 0.7058823529411765);
