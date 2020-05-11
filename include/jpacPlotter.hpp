@@ -65,8 +65,8 @@ public:
   double xlow, xhigh, ylow, yhigh;
 
   // Set label and range for x axis
-  void SetXaxis(std::string label, double low, double high);
-  void SetYaxis(std::string label, double low, double high);
+  void SetXaxis(std::string label, double low = 0., double high = 0.);
+  void SetYaxis(std::string label, double low = 0., double high = 0.);
 
   // Plot all the saved entries and print to file given by filename
   // This will depend on specific implementation and needs to be overridden
