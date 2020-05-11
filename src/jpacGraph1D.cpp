@@ -17,26 +17,22 @@ void jpacGraph1D::AddEntry(std::vector<double> xs, std::vector<double> fxs, std:
 };
 
 // -----------------------------------------------------------------------------
-// Set the axes
-void jpacGraph1D::SetXaxis(std::string label, double low, double high)
+// Flip legCustom to true, indicate that we want manual placement of legend
+void jpacGraph1D::SetLegend(double xx, double yy)
 {
-  xLabel = label;
-
-  if (std::abs(low) > 0.000001 || std::abs(high) > 0.000001)
-  {
-    xlow = low; xhigh = high;
-    xCustom = true;
-  }
+  xCord = xx; yCord = yy;
+  legCustom = true;
 };
 
-void jpacGraph1D::SetYaxis(std::string label, double low, double high)
+// -----------------------------------------------------------------------------
+// Add the J^{PAC} logo in appropriate colors at the top right of the plot
+void jpacGraph1D::AddLogo()
 {
-  yLabel = label;
-  if (std::abs(low) > 0.000001 || std::abs(high) > 0.000001)
-  {
-    ylow = low; yhigh = high;
-    yCustom = true;
-  }
+  logo = new TLatex(.93, .89,  JPAC.c_str());
+  logo->SetNDC();
+  logo->SetTextSize(2/30.);
+  logo->SetTextAlign(32);
+  logo->Draw();
 };
 
 // -----------------------------------------------------------------------------
@@ -57,11 +53,19 @@ void jpacGraph1D::Plot(std::string filename)
   canvas->SetFixedAspectRatio();
 
   // Set up the Legend
-  legend = new TLegend(xCord, yCord, xCord + .3, yCord + .15);
-  legend->SetFillStyle(0);
-  if (entries.size() > 4)
+  if (legCustom == true)
   {
-    legend->SetNColumns(2);
+    legend = new TLegend(xCord, yCord, xCord + .3, yCord + .15);
+  }
+  else
+  {
+    legend = new TLegend(); // Automatic placement
+  }
+
+  legend->SetFillStyle(0);
+  if (entries.size() > 5)
+  {
+    legend->SetNColumns(2); // Two column style if more than 5 entries
   }
 
   // Draw the first entry
@@ -106,16 +110,4 @@ void jpacGraph1D::Plot(std::string filename)
 
   legend->Draw();
   canvas->Print(filename.c_str());
-};
-
-// -----------------------------------------------------------------------------
-// Add the J^{PAC} logo in appropriate colors at the top right of the plot
-// Optional boolean argument to change whether black and white or incolors
-void jpacGraph1D::AddLogo()
-{
-  logo = new TLatex(.93, .89,  JPAC.c_str());
-  logo->SetNDC();
-  logo->SetTextSize(2/30.);
-  logo->SetTextAlign(32);
-  logo->Draw();
 };
