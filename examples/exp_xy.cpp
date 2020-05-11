@@ -32,10 +32,15 @@ int main()
     }
   }
 
-  //Initialize graphing object
-  jpacGraph2D* plotter = new jpacGraph2D();
+  // Initialize graphing object
+  // Can be empty and add data with SetData
+  // jpacGraph2D* plotter = new jpacGraph2D();
+  // plotter->SetData(x, y, z);
 
-  plotter->SetData(x, y, z);
+  // Or all in one command:
+  jpacGraph2D* plotter = new jpacGraph2D(x, y, z);
+
+  // Set up the labels and ranges of the axes
   plotter->SetXaxis("x", -1., 1.);
   plotter->SetYaxis("y", -1., 1.);
 

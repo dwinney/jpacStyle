@@ -19,7 +19,14 @@
 class jpacGraph2D : public jpacPlotter
 {
 public:
+  // Default constructor
   jpacGraph2D(){};
+
+  // Parameterized constructor for effeciency
+  jpacGraph2D(std::vector<double> x, std::vector<double> y, std::vector<double> z)
+  {
+    SetData(x, y, z);
+  };
 
   ~jpacGraph2D()
   {
