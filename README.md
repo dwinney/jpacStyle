@@ -8,8 +8,23 @@ cd build
 cmake ..
 make
 ```
-This will make `libJpacStyle.a` in the build directory which can be linked to other code to have access to the header files.
+This will make `libJpacStyle.a` in the build directory which can be added to `$PATH` for access to the header files.
 
+Alternatively, clone this repo into the working directory of the project you intend to link and add the following lines to `CMakeList.txt`:
+```
+# BUILD THE PLOTTING LIBRARY
+include_directories("jpacStyle/include")
+include_directories("jpacStyle/src")
+file(GLOB_RECURSE PLOTINC "jpacStyle/include/*.hpp")
+file(GLOB_RECURSE PLOTSRC "jpacStyle/src/*.cpp")
+add_library( JpacStyle ${PLOTINC} ${PLOTSRC} )
+```
+then link to any executable with
+```
+target_link_libraries( $MY_EXE JpacStyle)
+```
+
+For questions email: *dwinney@iu.edu*.
 ### jpacGraph1D
 This object allows you to easily make one-dimensional plots according to the style and with minimal ROOT syntax.
 
