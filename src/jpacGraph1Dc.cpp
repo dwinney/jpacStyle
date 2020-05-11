@@ -61,6 +61,28 @@ void jpacGraph1Dc::SetLegend(double xx, double yy)
 };
 
 // -----------------------------------------------------------------------------
+// Set up the custom labels and ranges for the 2 y axes
+void jpacGraph1Dc::SetYRealaxis(std::string label, double low, double high)
+{
+  yRLabel = label;
+  if (std::abs(low) > 0.000001 || std::abs(high) > 0.000001)
+  {
+    yRlow = low; yRhigh = high;
+    yRCustom = true;
+  }
+};
+
+void jpacGraph1Dc::SetYImagaxis(std::string label, double low, double high)
+{
+  yILabel = label;
+  if (std::abs(low) > 0.000001 || std::abs(high) > 0.000001)
+  {
+    yIlow = low; yIhigh = high;
+    yICustom = true;
+  }
+};
+
+// -----------------------------------------------------------------------------
 // Take in x and f(x) values as a vector and a legend entry
 void jpacGraph1Dc::AddEntry(std::vector<double> xs, std::vector<std::complex<double>> fxs, std::string name)
 {
@@ -109,10 +131,10 @@ void jpacGraph1Dc::Plot(std::string filename)
     std::cout << "Warning! Number of curve greater than number of colors (10)! \n";
     std::cout << "\n";
   }
-  if (yCustom == true)
+  if (yCustom == true || yLabel != "")
   {
-    std::cout << "Warning! Custom y-Axis ranges not implements with complex function plotting! \n";
-    std::cout << "Additional arguments to SetYaxis() will be ignored... \n";
+    std::cout << "Warning! Custom Y-axes for complex plots implemented with SetYRealaxis and SetYImagaxis! \n";
+    std::cout << "Call to SetYaxis() will be ignored... \n";
     std::cout << "\n";
   }
 
@@ -132,7 +154,7 @@ void jpacGraph1Dc::Plot(std::string filename)
   // Set up the Legend
   if (legCustom == true)
   {
-    legend = new TLegend(xCord, yCord, xCord + .3, yCord + .15);
+    legend = new TLegend(xCord, yCord, xCord + .2, yCord + .12);
   }
   else
   {
@@ -150,6 +172,8 @@ void jpacGraph1Dc::Plot(std::string filename)
   if (entries.size() > 5)
   {
     legend->SetNColumns(2); // Two column style if more than 5 entries
+    legend->SetColumnSeparation(.3);
+
   }
 
   // Plot the zeroth curve
@@ -173,8 +197,12 @@ void jpacGraph1Dc::Plot(std::string filename)
     xAxisReal->SetRangeUser(xlow, xhigh);
   }
   TAxis* yAxisReal = gReal_0->GetYaxis();
-  yAxisReal->SetTitle(yLabel.c_str());
+  yAxisReal->SetTitle(yRLabel.c_str());
   yAxisReal->CenterTitle(true);
+  if (yRCustom == true)
+  {
+    yAxisReal->SetRangeUser(yRlow, yRhigh);
+  }
 
   // Now the imaginary part on lower graph
   TGraph* gImag_0 = std::get<1>(entries[0]);
@@ -194,8 +222,12 @@ void jpacGraph1Dc::Plot(std::string filename)
     xAxisImag->SetRangeUser(xlow, xhigh);
   }
   TAxis* yAxisImag = gImag_0->GetYaxis();
-  yAxisImag->SetTitle(yLabel.c_str());
+  yAxisImag->SetTitle(yILabel.c_str());
   yAxisImag->CenterTitle(true);
+  if (yICustom == true)
+  {
+    yAxisImag->SetRangeUser(yIlow, yIhigh);
+  }
 
   // Repeat for each subsequent curve on top of the set up canvas
   for (int i = 1; i < entries.size(); i++)

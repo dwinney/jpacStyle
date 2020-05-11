@@ -56,9 +56,10 @@ int main()
 
   // Set the labels of the axes
   plotter->SetXaxis("#font[12]{W} (GeV)", 0., 20.);
-  plotter->SetYaxis("#font[12]{d#sigma/dt} (#font[12]{nB}/GeV^{2})");
+  plotter->SetYRealaxis("H#font[12]{_{#alpha}(W)}   (#font[12]{nB}/GeV^{2})", -0.5, 1.);
+  plotter->SetYImagaxis("H#font[12]{_{#alpha}(W)}   (#font[12]{nB}/GeV^{2})", -0.5, 1.);
 
-  plotter->SetLegend(.6, .2);
+  plotter->SetLegend(.5, .31);
 
   // Output to a file
   plotter->Plot("hankel.pdf");
