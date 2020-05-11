@@ -35,10 +35,15 @@ my_1Dplotter->SetLegend(double, double);
 my_1Dplotter->SetXaxis(string, double, double);
 my_1Dplotter->SetYaxis(string, double, double);
 ```
-Axes labels are TLatex objects and thus follow the same syntax for mathematical symbols (see [doc](https://root.cern.ch/doc/master/classTLatex.html)).
+Axes labels are TLatex objects and thus follow the same syntax for mathematical symbols (see [doc](https://root.cern.ch/doc/master/classTLatex.html)). For an example script using this object see [bessel.cpp](./examples/bessel.cpp).
 
 ### jpacGraph1Dc
-This is operates nearly identical to the above but allows for plotting the Real and Imaginary parts of a complex valued function at the same time. All the functions available in `jpacGraph1D` are present here except all with the possibility of accepting `vector< complex<double> >`. 
+This is operates nearly identical to the above but allows for plotting complex valued function defined on the real line. All the functions available in `jpacGraph1D` are present here except all with the possibility of accepting complex vectors when adding entries:
+```c++
+jpacGraph1Dc* my_1Dcplotter = new jpacGraph1Dc();
+my_1Dcplotter->AddEntry(vector<double>, vector<complex<double>>, string);
+```
+Output is the Real and Imaginary parts plotted seperately in the same file (See [hankel.cpp](./examples/hankel.cpp)).
 
 ### jpacGraph2D
 This object allows yo uto make two-dimensional plots according to JPAC color scheme with minimal ROOT interfacing.
@@ -60,6 +65,8 @@ As above, additional customization of the axes is available through:
 my_2Dplotter->SetXaxis(string, double, double);
 my_2Dplotter->SetYaxis(string, double, double);
 ```
+See the example executable [exp_xy.cpp](./examples/exp_xy.cpp).
+
 ### importStyle.C
 Alternatively if you want to make the plots manually through ROOT, this macro imports the jpacStyle and jpacColors. Also adds a function `AddLogo()` which adds the collaboration logo in the upper right corner.
 Simply load when opening ROOT:
