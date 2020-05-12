@@ -24,7 +24,7 @@ then link to any executable with
 target_link_libraries( $MY_EXE JpacStyle)
 ```
 
-For questions email: *dwinney@iu.edu*.
+For a full example of this see [vector_photoproduction](https://github.com/dwinney/vector_photoproduction). For questions email: *dwinney@iu.edu*.
 ### jpacGraph1D
 This object allows you to easily make one-dimensional plots according to the style and with minimal ROOT syntax.
 
