@@ -10,7 +10,7 @@ make
 ```
 This will make `libJpacStyle.a` in the build directory which can be added to `$PATH` for access to the header files.
 
-Alternatively, clone this repo into the working directory of the project you intend to link and add the following lines to `CMakeList.txt`:
+Alternatively, clone this repo into the working directory of the project you intend to link (or add it as a `git submodule`) and add the following lines to `CMakeList.txt`:
 ```
 # BUILD THE PLOTTING LIBRARY
 include_directories("jpacStyle/include")
@@ -23,8 +23,8 @@ then link to any executable with
 ```
 target_link_libraries( $MY_EXE JpacStyle)
 ```
-
 For a full example of this see [vector_photoproduction](https://github.com/dwinney/vector_photoproduction). For questions email: *dwinney@iu.edu*.
+
 ### jpacGraph1D
 This object allows you to easily make one-dimensional plots according to the style and with minimal ROOT syntax.
 
