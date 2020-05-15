@@ -16,12 +16,6 @@
 #include <tuple>
 
 // -----------------------------------------------------------------------------
-// Super simple string functions to facilitate bolding and italics
-std::string ROOT_italics(std::string in);
-std::string ROOT_bold(std::string in);
-std::string ROOT_bold_italics(std:: string in);
-
-// -----------------------------------------------------------------------------
 // Abstract class for the jpac style
 class jpacGraph1D : public jpacPlotter
 {
