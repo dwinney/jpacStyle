@@ -45,7 +45,7 @@ void jpacGraph1D::SetLegend(double xx, double yy)
 // Add the J^{PAC} logo in appropriate colors at the top right of the plot
 void jpacGraph1D::AddLogo()
 {
-  logo = new TLatex(.93, .89,  JPAC.c_str());
+  logo = new TLatex(.91, .89,  JPAC.c_str());
   logo->SetNDC();
   logo->SetTextSize(2/30.);
   logo->SetTextAlign(32);
