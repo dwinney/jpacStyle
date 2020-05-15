@@ -110,6 +110,14 @@ void jpacPlotter::SetXaxis(std::string label, double low, double high)
   }
 };
 
+void jpacPlotter::SetXlogscale(bool opt)
+{
+  if (opt == true)
+  {
+    canvas->SetLogx(1);
+  }
+}
+
 void jpacPlotter::SetYaxis(std::string label, double low, double high)
 {
   yLabel = label;
@@ -119,3 +127,11 @@ void jpacPlotter::SetYaxis(std::string label, double low, double high)
     yCustom = true;
   }
 };
+
+void jpacPlotter::SetYlogscale(bool opt)
+{
+  if (opt == true)
+  {
+    canvas->SetLogy(1);
+  }
+}
