@@ -1,4 +1,8 @@
 # jpacStyle
+<p align="center">
+  <img width="350" src="./doc/JPAClogo.png">
+</p>
+
 Library for making plots in C++/[ROOT](https://root.cern/) for the JPAC Collaboration.
 
 Compile the library with the following command:
