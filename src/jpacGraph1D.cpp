@@ -45,7 +45,7 @@ void jpacGraph1D::SetLegend(double xx, double yy)
 // Add the J^{PAC} logo in appropriate colors at the top right of the plot
 void jpacGraph1D::AddLogo()
 {
-  logo = new TLatex(.93, .89,  JPAC.c_str());
+  logo = new TLatex(.91, .89,  JPAC.c_str());
   logo->SetNDC();
   logo->SetTextSize(2/30.);
   logo->SetTextAlign(32);
@@ -93,13 +93,14 @@ void jpacGraph1D::Plot(std::string filename)
   }
 
   // Draw the first entry
-  std::get<0>(entries[0])->UseCurrentStyle();
-  std::get<0>(entries[0])->SetTitle("");
-  std::get<0>(entries[0])->SetLineWidth(3);
-  std::get<0>(entries[0])->SetLineColor(jpacColors[0]);
+  TGraph* f_0 = std::get<0>(entries[0]);
+  f_0->UseCurrentStyle();
+  f_0->SetTitle("");
+  f_0->SetLineWidth(3);
+  f_0->SetLineColor(jpacColors[0]);
 
   // Set up the axes
-  TAxis* xAxis = std::get<0>(entries[0])->GetXaxis();
+  TAxis* xAxis = f_0->GetXaxis();
   xAxis->SetTitle(xLabel.c_str());
   xAxis->CenterTitle(true);
   if (xCustom == true)
@@ -107,7 +108,7 @@ void jpacGraph1D::Plot(std::string filename)
     xAxis->SetRangeUser(xlow, xhigh);
   }
 
-  TAxis* yAxis = std::get<0>(entries[0])->GetYaxis();
+  TAxis* yAxis = f_0->GetYaxis();
   yAxis->SetTitle(yLabel.c_str());
   yAxis->CenterTitle(true);
   if (yCustom == true)
@@ -116,8 +117,8 @@ void jpacGraph1D::Plot(std::string filename)
   }
 
   // Draw the first curve
-  std::get<0>(entries[0])->Draw("AL");
-  legend->AddEntry(std::get<0>(entries[0]), std::get<1>(entries[0]).c_str(), "l");
+  f_0->Draw("AL");
+  legend->AddEntry(f_0, std::get<1>(entries[0]).c_str(), "l");
 
   // Add the logo
   AddLogo();
@@ -125,11 +126,12 @@ void jpacGraph1D::Plot(std::string filename)
   // And any subsequent ones on the same canvas
   for (int i = 1; i < entries.size(); i++)
   {
-    std::get<0>(entries[i])->SetLineWidth(3);
-    std::get<0>(entries[i])->SetLineColor(jpacColors[i]);
-    std::get<0>(entries[i])->Draw("same");
+    TGraph* f_i = std::get<0>(entries[i]);
+    f_i->SetLineWidth(3);
+    f_i->SetLineColor(jpacColors[i]);
+    f_i->Draw("same");
 
-    legend->AddEntry(std::get<0>(entries[i]), std::get<1>(entries[i]).c_str(), "l");
+    legend->AddEntry(f_i, std::get<1>(entries[i]).c_str(), "l");
   };
 
   if (legAdd == true)

@@ -19,6 +19,12 @@
 #include <TError.h>
 #include <TLatex.h>
 
+// -----------------------------------------------------------------------------
+// Super simple string functions to facilitate bolding and italics
+std::string ROOT_italics(std::string in);
+std::string ROOT_bold(std::string in);
+std::string ROOT_bold_italics(std:: string in);
+
 class jpacPlotter
 {
 public:
@@ -66,7 +72,9 @@ public:
 
   // Set label and range for x axis
   void SetXaxis(std::string label, double low = 0., double high = 0.);
+  void SetXlogscale(bool key);
   void SetYaxis(std::string label, double low = 0., double high = 0.);
+  void SetYlogscale(bool key);
 
   // Plot all the saved entries and print to file given by filename
   // This will depend on specific implementation and needs to be overridden
