@@ -45,6 +45,11 @@ my_1Dplotter->Plot(string);
 ```
 You can add multiple curves (up to 10, because we only have 10 colors defined).
 
+<p align="center">
+  <img width="500" src="./doc/colors1.png">
+  <img width="500" src="./doc/colors2.png">
+</p>
+
 Additional customization can be set up with the previous functions before plotting:
 ```c++
 // Manually place location of the legend with relative coordinate of the bottom left vertex x and y
@@ -56,6 +61,10 @@ my_1Dplotter->SetYaxis(string, double, double);
 ```
 Axes labels are TLatex objects and thus follow the same syntax for mathematical symbols (see [doc](https://root.cern.ch/doc/master/classTLatex.html)). For an example script using this object see [bessel.cpp](./examples/bessel.cpp).
 
+<p align="center">
+  <img width="500" src="./doc/bessel.png">
+</p>
+
 ### jpacGraph1Dc
 This is operates nearly identical to the above but allows for plotting complex valued function defined on the real line. All the functions available in `jpacGraph1D` are present here except all with the possibility of accepting complex vectors when adding entries:
 ```c++
@@ -63,6 +72,10 @@ jpacGraph1Dc* my_1Dcplotter = new jpacGraph1Dc();
 my_1Dcplotter->AddEntry(vector<double>, vector<complex<double>>, string);
 ```
 Output is the Real and Imaginary parts plotted seperately in the same file (See [hankel.cpp](./examples/hankel.cpp)).
+
+<p align="center">
+  <img width="500" src="./doc/hankel.png">
+</p>
 
 ### jpacGraph2D
 This object allows yo uto make two-dimensional plots according to JPAC color scheme with minimal ROOT interfacing.
@@ -85,6 +98,11 @@ my_2Dplotter->SetXaxis(string, double, double);
 my_2Dplotter->SetYaxis(string, double, double);
 ```
 See the example executable [2dgaussian.cpp](./examples/2dgaussian.cpp).
+
+<p align="center">
+  <img width="500" src="./doc/2dgaussian.png">
+</p>
+
 
 ### importStyle.C
 Alternatively if you want to make the plots manually through ROOT, this macro imports the jpacStyle and jpacColors. Also adds a function `AddLogo()` which adds the collaboration logo in the upper right corner.
