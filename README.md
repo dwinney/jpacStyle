@@ -70,7 +70,7 @@ my_1Dplotter->SetYaxis(std::string yLabel, double yMin, double yMax);
 Axes labels are TLatex objects and thus follow the same syntax for mathematical symbols (see [doc](https://root.cern.ch/doc/master/classTLatex.html)). For an example script using this object see [bessel.cpp](./examples/bessel.cpp).
 
 <p align="center">
-  <img width="500" src="./doc/bessel.png">
+  <img width="600" src="./doc/bessel.png">
 </p>
 
 ### jpacGraph1Dc
@@ -89,7 +89,7 @@ my_2Dplotter->SetYImagaxis(std::string yLabel, double yMin, double yMax);
 Output is the Real and Imaginary parts plotted seperately in the same file (See [hankel.cpp](./examples/hankel.cpp)).
 
 <p align="center">
-  <img width="500" src="./doc/hankel.png">
+  <img width="600" src="./doc/hankel.png">
 </p>
 
 ### jpacGraph2D
@@ -115,7 +115,7 @@ my_2Dplotter->SetYaxis(std::string yLabel, double yMin, double yMax);
 See the example executable [2dgaussian.cpp](./examples/2dgaussian.cpp).
 
 <p align="center">
-  <img width="500" src="./doc/2dgaussian.png">
+  <img width="600" src="./doc/2dgaussian.png">
 </p>
 
 
