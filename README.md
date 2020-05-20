@@ -29,7 +29,7 @@ target_link_libraries( $MY_EXE JpacStyle)
 ```
 For a full example of this see [vector_photoproduction](https://github.com/dwinney/vector_photoproduction). For questions email: *dwinney@iu.edu*.
 
-### jpacGraph1D
+### [jpacGraph1D](./include/jpacGraph1D.hpp)
 This object allows you to easily make one-dimensional plots according to the style and with minimal ROOT syntax.
 
 Basic usage is:
@@ -38,17 +38,24 @@ Basic usage is:
 jpacGraph1D* my_1Dplotter = new jpacGraph1D();
 
 // Add x and f(x) data in a vector and a string for the legend label
-my_1Dplotter->AddEntry(std::vector<double> x, std::vector<double> fx, std::string legendTitle);
+my_1Dplotter->AddEntry(vector<double> x, vector<double> fx, string legendTitle);
 
 // Plot to file
-my_1Dplotter->Plot(std::string filename);
+my_1Dplotter->Plot(string filename);
 ```
-You can add multiple curves (up to 10, because we only have 10 colors defined).
+All of ROOT's supported output formats are available as extentions in the filename (.eps, .pdf, .png, etc.) for a full list see ROOT documentation on [`TPad::Print()`](https://root.cern.ch/doc/master/classTPad.html).
+
+You can add multiple curves by calling `AddEntry()` multiple times (up to 10, because we only have 10 colors defined).
 
 <p align="center">
   <img width="500" src="./doc/colors1.png">
   <img width="500" src="./doc/colors2.png">
 </p>
+
+Only one `jpacGraph` object can be active at a time because of name collisions with ROOT canvases. To plot new output from an existing `jpacGraph1D` use:
+```cpp
+my_1Dplotter->ClearData();
+```
 
 Additional customization can be set up with the previous functions before plotting:
 ```cpp
@@ -59,13 +66,17 @@ my_1Dplotter->SetLegend(double xCord, double yCord);
 my_1Dplotter->SetLegend(false);
 
 // Add axis labels
-my_1Dplotter->SetXaxis(std::string xLabel);
-my_1Dplotter->SetYaxis(std::string yLabel);
+my_1Dplotter->SetXaxis(string xLabel);
+my_1Dplotter->SetYaxis(string yLabel);
 
 // The above will set the range of the plot based on the first
 // Entry added. To manually fix the range use optional parameters:
-my_1Dplotter->SetXaxis(std::string xLabel, double xMin, double xMax);
-my_1Dplotter->SetYaxis(std::string yLabel, double yMin, double yMax);
+my_1Dplotter->SetXaxis(string xLabel, double xMin, double xMax);
+my_1Dplotter->SetYaxis(string yLabel, double yMin, double yMax);
+
+// Toggle logarithmic axes
+my_1Dplotter->SetYlog(bool key);
+my_1Dplotter->SetXlog(bool key);
 ```
 Axes labels are TLatex objects and thus follow the same syntax for mathematical symbols (see [doc](https://root.cern.ch/doc/master/classTLatex.html)). For an example script using this object see [bessel.cpp](./examples/bessel.cpp).
 
@@ -73,18 +84,18 @@ Axes labels are TLatex objects and thus follow the same syntax for mathematical 
   <img width="600" src="./doc/bessel.png">
 </p>
 
-### jpacGraph1Dc
+### [jpacGraph1Dc](./include/jpacGraph1Dc.hpp)
 This is operates nearly identical to the above but allows for plotting complex valued function defined on the real line. All the functions available in `jpacGraph1D` are present here except all with the possibility of accepting complex vectors when adding entries:
 ```cpp
 jpacGraph1Dc* my_1Dcplotter = new jpacGraph1Dc();
 
 // Adding complex-valued entry
-my_1Dcplotter->AddEntry(std::vector<double> x, std::vector<complex<double>> fx, std::string legendTitle);
+my_1Dcplotter->AddEntry(vector<double> x, vector<complex<double>> fx, string legendTitle);
 
 // There are now 2 y-axes for the real and imaginary parts
 // These are independently customizable with:
-my_2Dplotter->SetYRealaxis(std::string yLabel, double yMin, double yMax);
-my_2Dplotter->SetYImagaxis(std::string yLabel, double yMin, double yMax);
+my_2Dplotter->SetYRealaxis(string yLabel, double yMin, double yMax);
+my_2Dplotter->SetYImagaxis(string yLabel, double yMin, double yMax);
 ```
 Output is the Real and Imaginary parts plotted seperately in the same file (See [hankel.cpp](./examples/hankel.cpp)).
 
@@ -92,7 +103,7 @@ Output is the Real and Imaginary parts plotted seperately in the same file (See 
   <img width="600" src="./doc/hankel.png">
 </p>
 
-### jpacGraph2D
+### [jpacGraph2D](./include/jpacGraph2D.hpp)
 This object allows yo uto make two-dimensional plots according to JPAC color scheme with minimal ROOT interfacing.
 
 Basic usage is even easier than above since only one function is plottable at once:
@@ -101,17 +112,10 @@ Basic usage is even easier than above since only one function is plottable at on
 jpacGraph2D* my_2Dplotter = new jpacGraph2D();
 
 // Add in the x, y, and z data as vectors
-my_2Dplotter->AddData(std::vector<double> x, std::vector<double> y, std::vector<double>) z;
+my_2Dplotter->AddData(vector<double> x, vector<double> y, vector<double>) z;
+```
+Most of the customization functions above are available here as well.
 
-// Plot to file
-my_2Dplotter->Plot(string filename);
-```
-As above, additional customization of the axes is available through:
-```c++
-// Axis label, minimum and maximum values
-my_2Dplotter->SetXaxis(std::string xLabel, double xMin, double xMax);
-my_2Dplotter->SetYaxis(std::string yLabel, double yMin, double yMax);
-```
 See the example executable [2dgaussian.cpp](./examples/2dgaussian.cpp).
 
 <p align="center">
