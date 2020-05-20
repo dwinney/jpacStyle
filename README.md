@@ -75,8 +75,8 @@ my_1Dplotter->SetXaxis(string xLabel, double xMin, double xMax);
 my_1Dplotter->SetYaxis(string yLabel, double yMin, double yMax);
 
 // Toggle logarithmic axes
-my_1Dplotter->SetYlog(bool key);
-my_1Dplotter->SetXlog(bool key);
+my_1Dplotter->SetYlogscale(bool key);
+my_1Dplotter->SetXlogscale(bool key);
 ```
 Axes labels are TLatex objects and thus follow the same syntax for mathematical symbols (see [doc](https://root.cern.ch/doc/master/classTLatex.html)). For an example script using this object see [bessel.cpp](./examples/bessel.cpp).
 
