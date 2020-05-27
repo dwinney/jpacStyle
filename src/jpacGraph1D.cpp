@@ -35,9 +35,10 @@ void jpacGraph1D::SetLegend(bool ifremove)
 };
 
 // Flip legCustom to true, indicate that we want manual placement of legend
-void jpacGraph1D::SetLegend(double xx, double yy)
+void jpacGraph1D::SetLegend(double xx, double yy, std::string headr)
 {
   xCord = xx; yCord = yy;
+  header = headr;
   legCustom = true;
 };
 
@@ -45,7 +46,7 @@ void jpacGraph1D::SetLegend(double xx, double yy)
 // Add the J^{PAC} logo in appropriate colors at the top right of the plot
 void jpacGraph1D::AddLogo()
 {
-  logo = new TLatex(.91, .89,  JPAC.c_str());
+  logo = new TLatex(.91, .88,  JPAC.c_str());
   logo->SetNDC();
   logo->SetTextSize(2/30.);
   logo->SetTextAlign(32);
@@ -90,6 +91,13 @@ void jpacGraph1D::Plot(std::string filename)
   if (entries.size() > 5)
   {
     legend->SetNColumns(2); // Two column style if more than 5 entries
+  }
+
+  // IF theres a custom header add it
+  if (header != "")
+  {
+    header = "    " + header;
+    legend->SetHeader(header.c_str());
   }
 
   // Draw the first entry

@@ -48,7 +48,7 @@ public:
 
   // Set up the Legend
   void SetLegend(bool ifremove);
-  void SetLegend(double xx, double yy);
+  void SetLegend(double xx, double yy, std::string header = "");
 
   // Plot to file
   void Plot(std::string filename);
@@ -57,6 +57,7 @@ private:
   // Legend Parameters
   TLegend * legend = NULL;
   double xCord, yCord;
+  std::string header;
   bool legCustom = false, legAdd = true;
 
   // Position the logo in to top right
