@@ -96,7 +96,6 @@ void jpacGraph1D::Plot(std::string filename)
   // IF theres a custom header add it
   if (header != "")
   {
-    header = "    " + header;
     legend->SetHeader(header.c_str());
   }
 
