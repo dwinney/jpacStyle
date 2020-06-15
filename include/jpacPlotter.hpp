@@ -25,7 +25,7 @@ std::string ROOT_italics(std::string in);
 std::string ROOT_bold(std::string in);
 std::string ROOT_bold_italics(std:: string in);
 
-void y_range(std::string input, double * output);
+bool y_range(std::string input, double * output);
 
 class jpacPlotter
 {

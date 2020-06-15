@@ -27,7 +27,7 @@ std::string ROOT_bold_italics(std::string in)
 // -----------------------------------------------------------------------------
 // Function to parse a string to specify y range at command line
 // input of the form : "[y1:y2]"
-void y_range(std::string input, double * output)
+bool y_range(std::string input, double * output)
 {
   std::string delimiter = ":";
   size_t pos = input.find(delimiter);
@@ -38,6 +38,8 @@ void y_range(std::string input, double * output)
 
   output[0] = std::stod(y1);
   output[1] = std::stod(y2);
+
+  return true;
 };
 
 // -----------------------------------------------------------------------------
