@@ -88,10 +88,6 @@ private:
   // Entries are saved in tuples with their legend title as a string
   std::vector<std::tuple<TGraph*, TGraph*, std::string>> entries;
 
-  // Utilities to separate the real and imaginary parts into separate vectors
-  std::vector<double> vec_real(std::vector<std::complex<double>> fx);
-  std::vector<double> vec_imag(std::vector<std::complex<double>> fx);
-
   // Add the logo to both plots!
   void AddLogo();
 };

@@ -8,9 +8,7 @@
 #ifndef _JPAC_STYLE_
 #define _JPAC_STYLE_
 
-#include <iostream>
-#include <vector>
-#include <string>
+#include "jpacUtils.hpp"
 
 #include <TROOT.h>
 #include <TCanvas.h>
@@ -18,14 +16,6 @@
 #include <TStyle.h>
 #include <TError.h>
 #include <TLatex.h>
-
-// -----------------------------------------------------------------------------
-// Super simple string functions to facilitate bolding and italics
-std::string ROOT_italics(std::string in);
-std::string ROOT_bold(std::string in);
-std::string ROOT_bold_italics(std:: string in);
-
-void y_range(std::string input, double * output);
 
 class jpacPlotter
 {

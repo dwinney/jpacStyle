@@ -7,45 +7,6 @@
 
 #include "jpacGraph1Dc.hpp"
 
-// Utility functions that take in a vector of complex<doubles> and return vector<double>s of the same size
-// containing only the real or imaginary parts.
-//-----------------------------------------------------------------------------
-std::vector<double> jpacGraph1Dc::vec_real(std::vector<std::complex<double>> fx)
-{
-  std::vector<double> result;
-  for (int i = 0; i < fx.size(); i++)
-  {
-    result.push_back(real(fx[i]));
-  }
-
-  // Quick Error check
-  if (result.size() != fx.size())
-  {
-    std::cout << "vec_real: ERROR Output and Input vector sizes dont match. Quitting... \n";
-    std::exit(1);
-  }
-
-  return result;
-};
-
-std::vector<double> jpacGraph1Dc::vec_imag(std::vector<std::complex<double>> fx)
-{
-  std::vector<double> result;
-  for (int i = 0; i < fx.size(); i++)
-  {
-    result.push_back(imag(fx[i]));
-  }
-
-  // Quick Error check
-  if (result.size() != fx.size())
-  {
-    std::cout << "vec_imag: ERROR Output and Input vector sizes dont match. Quitting... \n";
-    std::exit(1);
-  }
-
-  return result;
-};
-
 // -----------------------------------------------------------------------------
 // Toggle legAdd which if false wont draw a legend at all
 void jpacGraph1Dc::SetLegend(bool ifremove)
