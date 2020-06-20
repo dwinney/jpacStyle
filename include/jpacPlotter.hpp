@@ -17,6 +17,17 @@
 #include <TError.h>
 #include <TLatex.h>
 
+<<<<<<< HEAD
+=======
+// -----------------------------------------------------------------------------
+// Super simple string functions to facilitate bolding and italics
+std::string ROOT_italics(std::string in);
+std::string ROOT_bold(std::string in);
+std::string ROOT_bold_italics(std:: string in);
+
+bool y_range(std::string input, double * output);
+
+>>>>>>> 88329723c4b13b28745c0d010746a1d3c2e12225
 class jpacPlotter
 {
 public:

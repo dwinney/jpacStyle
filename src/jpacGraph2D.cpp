@@ -75,4 +75,6 @@ void jpacGraph2D::Plot(std::string filename)
 
   // Print to file
   canvas->Print(filename.c_str());
+
+  std::cout << "\njpacPlot output to: " << filename << "\n";
 };

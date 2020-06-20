@@ -146,4 +146,6 @@ void jpacGraph1D::Plot(std::string filename)
     legend->Draw();
   }
   canvas->Print(filename.c_str());
+
+  std::cout << "\njpacPlot output to: " << filename << "\n";
 };

@@ -241,4 +241,6 @@ void jpacGraph1Dc::Plot(std::string filename)
 
   canvas->Modified();
   canvas->Print(filename.c_str());
+
+  std::cout << "\njpacPlot output to: " << filename << "\n";
 };
