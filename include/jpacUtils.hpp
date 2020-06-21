@@ -12,7 +12,7 @@
 #include <vector>
 #include <complex>
 #include <string>
-
+#include <iomanip>
 #include <tuple>
 #include <array>
 #include <functional>
@@ -31,7 +31,7 @@ std::vector<double> vec_imag(std::vector<std::complex<double>> fx);
 void y_range(std::string input, double * output);
 
 // take in a lambda and output a vector
-std::array<std::vector<double>, 2> vec_fill(int N, std::function<double(double)> f, double min, double max);
+std::array<std::vector<double>, 2> vec_fill(int N, std::function<double(double)> f, double min, double max, bool DEBUG = false);
 
 // copmplex version of the above
 std::tuple<std::vector<double>, std::vector<std::complex<double>>> vec_fillc(int N, std::function<std::complex<double>(double)> f, double min, double max);
