@@ -34,6 +34,6 @@ void y_range(std::string input, double * output);
 std::array<std::vector<double>, 2> vec_fill(int N, std::function<double(double)> f, double min, double max, bool DEBUG = false);
 
 // copmplex version of the above
-std::tuple<std::vector<double>, std::vector<std::complex<double>>> vec_fillc(int N, std::function<std::complex<double>(double)> f, double min, double max);
+std::tuple<std::vector<double>, std::vector<std::complex<double>>> vec_fillc(int N, std::function<std::complex<double>(double)> f, double min, double max, bool DEBUG = false);
 
 #endif

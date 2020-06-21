@@ -92,7 +92,7 @@ std::array<std::vector<double>, 2> vec_fill(int N, std::function<double(double)>
 
     if (DEBUG == true)
     {
-      std::cout << std::left << std::setw(5) << i;
+      std::cout << std::left << std::setw(15) << i;
       std::cout << std::setw(15) << xi;
       std::cout << std::setw(15) << fxi << std::endl;
     }
@@ -101,7 +101,7 @@ std::array<std::vector<double>, 2> vec_fill(int N, std::function<double(double)>
   return {x, fx};
 };
 
-std::tuple<std::vector<double>, std::vector<std::complex<double>>> vec_fillc(int N, std::function<std::complex<double>(double)> f, double min, double max)
+std::tuple<std::vector<double>, std::vector<std::complex<double>>> vec_fillc(int N, std::function<std::complex<double>(double)> f, double min, double max, bool DEBUG)
 {
   std::vector<double> x;
   std::vector<std::complex<double>> fx;
@@ -112,6 +112,13 @@ std::tuple<std::vector<double>, std::vector<std::complex<double>>> vec_fillc(int
 
     std::complex<double> fxi = f(xi);
     fx.push_back(fxi);
+
+    if (DEBUG == true)
+    {
+      std::cout << std::left << std::setw(15) << i;
+      std::cout << std::setw(15) << xi;
+      std::cout << std::setw(15) << fxi << std::endl;
+    }
   }
 
   return std::make_tuple(x, fx);
