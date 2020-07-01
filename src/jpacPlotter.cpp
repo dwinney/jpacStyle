@@ -45,7 +45,7 @@ void jpacPlotter::SetStyle()
   jpacStyle->SetTitleOffset(1.1, "xyz");
 
   // More space for y-axis to avoid clashing with big numbers
-  jpacStyle->SetTitleOffset(1.6, "y");
+  jpacStyle->SetTitleOffset(1.3, "y");
 
   // This applies the same settings to the overall plot title
   jpacStyle->SetTitleSize(.055, "");
@@ -62,7 +62,6 @@ void jpacPlotter::SetStyle()
   jpacStyle->SetPadTickX(1);
   jpacStyle->SetPadTickY(1);
 
-  const int kjpacFont = 132;
   jpacStyle->SetStatFont(kjpacFont);
   jpacStyle->SetLabelFont(kjpacFont, "xyz");
   jpacStyle->SetTitleFont(kjpacFont, "xyz");

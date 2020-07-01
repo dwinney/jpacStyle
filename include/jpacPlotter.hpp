@@ -35,6 +35,9 @@ public:
     delete canvas, logo;
   };
 
+  // Default font
+  const int kjpacFont = 132;
+
   static Int_t  kjpacBlue, kjpacRed, kjpacGreen,
                 kjpacOrange, kjpacPurple, kjpacBrown,
                 kjpacPink, kjpacGold, kjpacAqua, kjpacGrey;

@@ -13,6 +13,7 @@
 #include <TLegend.h>
 #include <TGraph.h>
 #include <TAxis.h>
+#include <TGaxis.h>
 #include <tuple>
 
 // -----------------------------------------------------------------------------
@@ -50,6 +51,9 @@ public:
   void SetLegend(bool ifremove);
   void SetLegend(double xx, double yy, std::string header = "");
 
+  // Add a second Y-axis
+  void AddSecondScale(double ylow, double yhigh, std::string label = "");
+
   // Plot to file
   void Plot(std::string filename);
 
@@ -59,6 +63,11 @@ private:
   double xCord, yCord;
   std::string header;
   bool legCustom = false, legAdd = true;
+
+  // Second y-axis parameters;
+  double y2low, y2high;
+  std::string y2label;
+  bool SECOND_Y = false;
 
   // Position the logo in to top right
   void AddLogo();

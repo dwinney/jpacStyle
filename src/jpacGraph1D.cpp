@@ -43,10 +43,19 @@ void jpacGraph1D::SetLegend(double xx, double yy, std::string headr)
 };
 
 // -----------------------------------------------------------------------------
+// Add a second Y-axis
+void jpacGraph1D::AddSecondScale(double y1, double y2, std::string label)
+{
+  y2low = y1; y2high = y2;
+  y2label = label;
+  SECOND_Y = true;
+};
+
+// -----------------------------------------------------------------------------
 // Add the J^{PAC} logo in appropriate colors at the top right of the plot
 void jpacGraph1D::AddLogo()
 {
-  logo = new TLatex(.91, .88,  JPAC.c_str());
+  logo = new TLatex(.82, .85,  JPAC.c_str());
   logo->SetNDC();
   logo->SetTextSize(2/30.);
   logo->SetTextAlign(32);
@@ -71,10 +80,10 @@ void jpacGraph1D::Plot(std::string filename)
 
   // Force the canvas to be square
   // Also make sure to give enough room for the axes labels
-  canvas->SetTopMargin(0.05);
-  canvas->SetRightMargin(0.05);
+  canvas->SetTopMargin(0.07);
+  canvas->SetRightMargin(0.14);
   canvas->SetLeftMargin(0.14);
-  canvas->SetBottomMargin(0.12);
+  canvas->SetBottomMargin(0.14);
   canvas->SetFixedAspectRatio();
 
   // Set up the Legend
@@ -145,6 +154,40 @@ void jpacGraph1D::Plot(std::string filename)
   {
     legend->Draw();
   }
+
+  if (SECOND_Y == true)
+  {
+    // Remove tics on the right
+    canvas->SetTicky(0);
+
+    TPad *overlay = new TPad("overlay", "", 0, 0, 1, 1);
+    overlay->UseCurrentStyle();
+    overlay->SetFillStyle(0);
+    overlay->SetFrameFillStyle(0);
+    overlay->Draw("AF");
+    overlay->cd();
+
+    Double_t xmin = 0.2;
+    Double_t ymin = 0.14;
+    Double_t xmax = 0.86;
+    Double_t ymax = 0.93;
+
+    //Draw an axis on the right side
+    TGaxis *axis = new TGaxis(xmax,ymin, xmax, ymax, y2low, y2high, 506,"+L");
+
+    axis->SetTitle(y2label.c_str());
+    axis->CenterTitle(1);
+
+    axis->SetTitleSize(0.03);
+    axis->SetTitleOffset(1.6);
+    axis->SetLabelSize(.035);
+    axis->SetLabelOffset(.01);
+
+    axis->SetTitleFont(kjpacFont);
+    axis->SetLabelFont(kjpacFont);
+    axis->Draw();
+  }
+
   canvas->Print(filename.c_str());
 
   std::cout << "\njpacPlot output to: " << filename << "\n";
