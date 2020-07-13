@@ -2,3 +2,4 @@
 *.a
 Makefile
 /build/
+.vscode
