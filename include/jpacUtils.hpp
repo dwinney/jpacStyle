@@ -8,6 +8,7 @@
 #ifndef _JPAC_UTILS_
 #define _JPAC_UTILS_
 
+#include <fstream>
 #include <iostream>
 #include <vector>
 #include <complex>
@@ -30,10 +31,19 @@ std::vector<double> vec_imag(std::vector<std::complex<double>> fx);
 // Parse an input vector of the form "[a:b]"
 void y_range(std::string input, double * output);
 
+//-----------------------------------------------------------------------------
+// Functions for evaluating a function into vectors
+
 // take in a lambda and output a vector
 std::array<std::vector<double>, 2> vec_fill(int N, std::function<double(double)> f, double min, double max, bool DEBUG = false);
 
-// copmplex version of the above
+// complex version of the above
 std::tuple<std::vector<double>, std::vector<std::complex<double>>> vec_fillc(int N, std::function<std::complex<double>(double)> f, double min, double max, bool DEBUG = false);
+
+//-----------------------------------------------------------------------------
+// Functions for printing to file
+
+// Output a vector to a file
+void vec_print(std::vector<double> x, std::vector<double> fx, std::string filename);
 
 #endif

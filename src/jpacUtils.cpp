@@ -40,9 +40,9 @@ void y_range(std::string input, double * output)
   output[1] = std::stod(y2);
 };
 
+//-----------------------------------------------------------------------------
 // Utility functions that take in a vector of complex<doubles> and return vector<double>s of the same size
 // containing only the real or imaginary parts.
-//-----------------------------------------------------------------------------
 std::vector<double> vec_real(std::vector<std::complex<double>> fx)
 {
   std::vector<double> result;
@@ -79,6 +79,9 @@ std::vector<double> vec_imag(std::vector<std::complex<double>> fx)
   return result;
 };
 
+//-----------------------------------------------------------------------------
+// Return two vectors corresponding to x and f(x) of size N from x \in {min, max}
+// the bool debug is whether or not to print a command line message of the values being printed
 std::array<std::vector<double>, 2> vec_fill(int N, std::function<double(double)> f, double min, double max, bool DEBUG)
 {
   std::vector<double> fx, x;
@@ -101,6 +104,7 @@ std::array<std::vector<double>, 2> vec_fill(int N, std::function<double(double)>
   return {x, fx};
 };
 
+// the complex<double> version of above
 std::tuple<std::vector<double>, std::vector<std::complex<double>>> vec_fillc(int N, std::function<std::complex<double>(double)> f, double min, double max, bool DEBUG)
 {
   std::vector<double> x;
@@ -122,4 +126,32 @@ std::tuple<std::vector<double>, std::vector<std::complex<double>>> vec_fillc(int
   }
 
   return std::make_tuple(x, fx);
+};
+
+//-----------------------------------------------------------------------------
+// Take in vectors of x and f(x) and print them to file
+void vec_print(std::vector<double> x, std::vector<double> fx, std::string filename)
+{
+  if (x.size() != fx.size())
+  {
+    std::cout << "vec_print ERROR: input vectors not of the same size \n";
+    return;
+  }  
+
+  std::ofstream output;
+  output.open(filename.c_str());
+
+  for (int i = 0; i < x.size(); i ++)
+  {
+    output << std::left;
+    output << std::setw(15) << x[i];
+    output << std::setw(15) << fx[i] << std::endl;
+  }
+
+  output.close();
+
+  // Command-line messages
+  std::cout << "Output to:" << filename << std::endl;
+
+  return;
 };
