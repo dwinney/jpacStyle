@@ -20,7 +20,7 @@ include_directories("src")
 file(GLOB_RECURSE INC "include/*.hpp")
 file(GLOB_RECURSE SRC "src/*.cpp")
 
-add_library(JpacStyle ${INC} ${SRC} )
+add_library(JpacStyle SHARED ${INC} ${SRC} )
 
 # GRAB EXECUTABLES
 include_directories("examples")
