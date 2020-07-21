@@ -46,4 +46,7 @@ std::tuple<std::vector<double>, std::vector<std::complex<double>>> vec_fillc(int
 // Output a vector to a file
 void vec_print(std::vector<double> x, std::vector<double> fx, std::string filename);
 
+// Take in an ASCII file with two columns, x and f(x). Import values to an array of vectors
+std::array<std::vector<double>, 2> vec_read_file(std::string file_path);
+
 #endif

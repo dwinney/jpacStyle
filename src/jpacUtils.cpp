@@ -155,3 +155,29 @@ void vec_print(std::vector<double> x, std::vector<double> fx, std::string filena
 
   return;
 };
+
+//-----------------------------------------------------------------------------
+// Take in vectors of x and f(x) and print them to file// Take in an ASCII file with two columns, x and f(x). Import values to an array of vectors
+std::array<std::vector<double>, 2> vec_read_file(std::string file_path)
+{
+  std::vector<double> x , fx;
+
+  // Open file
+  std::ifstream data(file_path.c_str());
+
+  if (data.fail())
+  {
+      std::cout << "Error! Could not open file: " << file_path << "\n."; 
+      return {x, fx};
+  }
+  else
+  {
+    double x_i, fx_i;
+    while (data >> x_i >> fx_i)
+    {
+      x.push_back(x_i); fx.push_back(fx_i);
+    }
+  }
+
+  return {x, fx};
+};
