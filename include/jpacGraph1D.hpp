@@ -55,6 +55,7 @@ public:
   void AddSecondScale(double ylow, double yhigh, std::string label = "");
 
   // Plot to file
+  void Draw();
   void Plot(std::string filename);
 
 private:

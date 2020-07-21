@@ -63,8 +63,8 @@ void jpacGraph1D::AddLogo()
 };
 
 // -----------------------------------------------------------------------------
-// Plot all the saved entries and print to file given by filename
-void jpacGraph1D::Plot(std::string filename)
+// Plot all the saved entries 
+void jpacGraph1D::Draw()
 {
   if (entries.size() == 0)
   {
@@ -188,6 +188,15 @@ void jpacGraph1D::Plot(std::string filename)
     axis->Draw();
   }
 
+  canvas->Draw();
+};
+
+// -----------------------------------------------------------------------------
+// Plot and save to file.
+void jpacGraph1D::Plot(std::string filename)
+{
+  
+  Draw();
   canvas->Print(filename.c_str());
 
   std::cout << "\njpacPlot output to: " << filename << "\n";
