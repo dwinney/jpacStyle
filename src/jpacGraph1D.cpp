@@ -55,7 +55,15 @@ void jpacGraph1D::AddSecondScale(double y1, double y2, std::string label)
 // Add the J^{PAC} logo in appropriate colors at the top right of the plot
 void jpacGraph1D::AddLogo()
 {
-  logo = new TLatex(.82, .85,  JPAC.c_str());
+  if (SECOND_Y == true)
+  {
+    logo = new TLatex(.82, .85,  JPAC.c_str());
+  }
+  else
+  {
+    logo = new TLatex(.91, .885,  JPAC.c_str());
+  }
+
   logo->SetNDC();
   logo->SetTextSize(2/30.);
   logo->SetTextAlign(32);
@@ -80,11 +88,22 @@ void jpacGraph1D::Draw()
 
   // Force the canvas to be square
   // Also make sure to give enough room for the axes labels
-  canvas->SetTopMargin(0.07);
-  canvas->SetRightMargin(0.14);
-  canvas->SetLeftMargin(0.14);
-  canvas->SetBottomMargin(0.14);
-  canvas->SetFixedAspectRatio();
+  if (SECOND_Y == true)
+  {
+    canvas->SetTopMargin(0.07);
+    canvas->SetRightMargin(0.14);
+    canvas->SetLeftMargin(0.14);
+    canvas->SetBottomMargin(0.14);
+    canvas->SetFixedAspectRatio();
+  }
+  else
+  {
+    canvas->SetTopMargin(0.05);
+    canvas->SetRightMargin(0.05);
+    canvas->SetLeftMargin(0.14);
+    canvas->SetBottomMargin(0.12);
+    canvas->SetFixedAspectRatio();
+  }
 
   // Set up the Legend
   if (legCustom == true)
@@ -179,7 +198,7 @@ void jpacGraph1D::Draw()
     axis->CenterTitle(1);
 
     axis->SetTitleSize(0.03);
-    axis->SetTitleOffset(1.6);
+    axis->SetTitleOffset(1.9);
     axis->SetLabelSize(.035);
     axis->SetLabelOffset(.01);
 

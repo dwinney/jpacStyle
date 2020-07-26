@@ -42,17 +42,17 @@ void jpacPlotter::SetStyle()
   // Axis titles
   jpacStyle->SetNdivisions(506, "xy");
   jpacStyle->SetTitleSize(.045, "xyz");
-  jpacStyle->SetTitleOffset(1.1, "xyz");
+  jpacStyle->SetTitleOffset(1.3, "xyz");
 
   // More space for y-axis to avoid clashing with big numbers
-  jpacStyle->SetTitleOffset(1.3, "y");
+  jpacStyle->SetTitleOffset(1.55, "y");
 
   // This applies the same settings to the overall plot title
   jpacStyle->SetTitleSize(.055, "");
   jpacStyle->SetTitleOffset(.8, "");
 
   // Axis labels (numbering)
-  jpacStyle->SetLabelSize(.035, "xyz");
+  jpacStyle->SetLabelSize(.04, "xyz");
   jpacStyle->SetLabelOffset(.01, "xyz");
 
   // Thicker lines
