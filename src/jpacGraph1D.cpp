@@ -13,7 +13,14 @@ void jpacGraph1D::AddEntry(std::vector<double> xs, std::vector<double> fxs, std:
 {
   TGraph *g = new TGraph(xs.size(), &(xs[0]), &(fxs[0]));
   auto entry = std::make_tuple(g, name);
+
   entries.push_back(entry);
+};
+
+void jpacGraph1D::AddDashedEntry(std::vector<double> xs, std::vector<double> fxs)
+{
+  TGraph *g = new TGraph(xs.size(), &(xs[0]), &(fxs[0]));
+  dashed_entries.push_back(g);
 };
 
 // -----------------------------------------------------------------------------
@@ -25,6 +32,7 @@ void jpacGraph1D::ClearData()
     delete std::get<0>(entries[i]);
   }
   entries.clear();
+  dashed_entries.clear();
 };
 
 // -----------------------------------------------------------------------------
@@ -169,6 +177,16 @@ void jpacGraph1D::Draw()
     legend->AddEntry(f_i, std::get<1>(entries[i]).c_str(), "l");
   };
 
+  // Any dashed plots added on with same colors in same color order
+  for (int j = 0; j < dashed_entries.size(); j++)
+  {
+    TGraph* f_j = dashed_entries[j];
+    f_j->SetLineWidth(3);
+    f_j->SetLineColor(jpacColors[j]);
+    f_j->SetLineStyle(2);
+    f_j->Draw("same");
+  };
+
   if (legAdd == true)
   {
     legend->Draw();
@@ -214,7 +232,6 @@ void jpacGraph1D::Draw()
 // Plot and save to file.
 void jpacGraph1D::Plot(std::string filename)
 {
-  
   Draw();
   canvas->Print(filename.c_str());
 

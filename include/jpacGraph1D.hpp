@@ -38,11 +38,18 @@ public:
     {
       delete std::get<0>(entries[i]);
     }
+    for (int i = 0; i < dashed_entries.size(); i++)
+    {
+      delete dashed_entries[i];
+    }
     delete legend, logo;
   };
 
   // Take in x and f(x) values as a vector and a legend entry
   void AddEntry(std::vector<double> xs, std::vector<double> fxs, std::string name);
+
+  // Dashed entries reset the color order and dont add a legend entry
+  void AddDashedEntry(std::vector<double> xs, std::vector<double> fxs);
 
   // Clear all added entries
   void ClearData();
@@ -75,6 +82,7 @@ private:
 
   // Entries are saved in tuples with their legend title as a string
   std::vector<std::tuple<TGraph*, std::string>> entries;
+  std::vector<TGraph*> dashed_entries;
 };
 
 #endif
