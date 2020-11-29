@@ -22,20 +22,13 @@ public:
   // Default Constructor
   jpacGraph1Dc()
   {
-    canvas->Divide(1,2, 0.01, 0.005);
-    jpacStyle->SetTitleOffset(0.7, "y");
-    jpacStyle->SetLabelSize(.05, "xyz");
-    jpacStyle->SetTitleSize(.055, "xyz");
+    setup();
   };
 
   // Quick parameterized Constructor
   jpacGraph1Dc(std::vector<double> xs, std::vector<std::complex<double>> fxs, std::string name)
   {
-    canvas->Divide(1,2, 0.01, 0.005);
-    jpacStyle->SetTitleOffset(0.8, "y");
-    jpacStyle->SetLabelSize(.05, "xyz");
-    jpacStyle->SetTitleSize(.055, "xyz");
-
+    setup();
     AddEntry(xs, fxs, name);
   };
 
@@ -49,6 +42,14 @@ public:
       delete std::get<1>(entries[i]);
     }
     delete imagTag, realTag, legend;
+  };
+
+  inline void setup()
+  {
+    canvas->Divide(1,2, 0.01, 0.005);
+    jpacStyle->SetTitleOffset(0.7, "y");
+    jpacStyle->SetLabelSize(.05, "xyz");
+    jpacStyle->SetTitleSize(.055, "xyz");
   };
 
   // Set up the Legend

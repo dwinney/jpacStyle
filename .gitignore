@@ -4,3 +4,5 @@ Makefile
 /build/
 .vscode
 /jupyter/.ipynb_checkpoints
+/lib/
+/bin/
