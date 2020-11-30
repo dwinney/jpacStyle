@@ -46,7 +46,7 @@ public:
 
   inline void setup()
   {
-    canvas->Divide(1,2, 0.01, 0.005);
+    canvas->Divide(1, 2, 0.01, 0.002);
     jpacStyle->SetTitleOffset(0.7, "y");
     jpacStyle->SetLabelSize(.05, "xyz");
     jpacStyle->SetTitleSize(.055, "xyz");
@@ -81,10 +81,10 @@ private:
 
   // Text to put on bottom right corner indicating real or imag part
   std::string sReal = "#scale[0.7]{#font[102]{Real Part}}";
-  TLatex* realTag = new TLatex(.92, 0.17, sReal.c_str());
+  TLatex* realTag = new TLatex(.92, 0.22, sReal.c_str());
 
   std::string sImag = "#scale[0.7]{#font[102]{Imaginary Part}}";
-  TLatex* imagTag = new TLatex(.92, 0.17, sImag.c_str());
+  TLatex* imagTag = new TLatex(.92, 0.22, sImag.c_str());
 
   // Entries are saved in tuples with their legend title as a string
   std::vector<std::tuple<TGraph*, TGraph*, std::string>> entries;
