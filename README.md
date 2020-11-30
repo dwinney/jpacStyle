@@ -7,27 +7,21 @@ Library for making plots in C++/[ROOT](https://root.cern/) for the JPAC Collabor
 
 Compile the library with the following command:
 ```bash
-mkdir build
-cd build
+mkdir build && cd build
 cmake ..
-make
+cmake --build . --target install
 ```
-This will make `libJpacStyle.a` in the build directory which can be added to `$PATH` for access to the header files.
+This will make build the library in the `/lib/` as well as a series of example executables in `/bin/`.
 
-Alternatively, clone this repo into the working directory of the project you intend to link (or add it as a `git submodule`) and add the following lines to `CMakeList.txt`:
-```cmake
-# BUILD THE PLOTTING LIBRARY
-include_directories("jpacStyle/include")
-include_directories("jpacStyle/src")
-file(GLOB_RECURSE PLOTINC "jpacStyle/include/*.hpp")
-file(GLOB_RECURSE PLOTSRC "jpacStyle/src/*.cpp")
-add_library( JpacStyle ${PLOTINC} ${PLOTSRC} )
+
+For usage in [jpacPhoto](https://github.com/dwinney/jpacPhoto) or [jpacTriangle](https://github.com/dwinney/jpacTriangle) set the environment variable `JPACSTYLE` to point to the top level directory after compiling:
+```bash
+# for bash
+export JPACSTYLE=/path/to/jpacStyle
+
+# for csh
+setenv JPACSTYLE /path/to/jpacStyle
 ```
-then link to any executable with
-```cmake
-target_link_libraries( $MY_EXE JpacStyle)
-```
-For a full example of this see [vector_photoproduction](https://github.com/dwinney/vector_photoproduction). For questions email: *dwinney@iu.edu*.
 
 ### [jpacGraph1D](./include/jpacGraph1D.hpp)
 This object allows you to easily make one-dimensional plots according to the style and with minimal ROOT syntax.
