@@ -57,6 +57,7 @@ public:
   // Set up the Legend
   void SetLegend(bool ifremove);
   void SetLegend(double xx, double yy, std::string header = "");
+  void SetLegendOffset(double xx, double yy);
 
   // Add a second Y-axis
   void AddSecondScale(double ylow, double yhigh, std::string label = "");
@@ -65,10 +66,11 @@ public:
   void Draw();
   void Plot(std::string filename);
 
-private:
+protected:
   // Legend Parameters
   TLegend * legend = NULL;
   double xCord, yCord;
+  double xLegOffset = 0.3, yLegOffset = .15;
   std::string header;
   bool legCustom = false, legAdd = true;
 

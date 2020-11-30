@@ -21,6 +21,12 @@ void jpacGraph1Dc::SetLegend(double xx, double yy)
   legCustom = true;
 };
 
+// Flip legCustom to true, indicate that we want manual placement of legend
+void jpacGraph1Dc::SetLegendOffset(double xx, double yy)
+{
+  xLegOffset = xx; yLegOffset = yy;
+};
+
 // -----------------------------------------------------------------------------
 // Set up the custom labels and ranges for the 2 y axes
 void jpacGraph1Dc::SetYRealaxis(std::string label, double low, double high)
@@ -135,7 +141,7 @@ void jpacGraph1Dc::Plot(std::string filename)
   // Set up the Legend
   if (legCustom == true)
   {
-    legend = new TLegend(xCord, yCord, xCord + .2, yCord + .12);
+    legend = new TLegend(xCord, yCord, xCord + xLegOffset, yCord + yLegOffset);
   }
   else
   {

@@ -55,6 +55,7 @@ public:
   // Set up the Legend
   void SetLegend(bool ifremove);
   void SetLegend(double xx, double yy);
+  void SetLegendOffset(double xx, double yy);
 
   void SetYRealaxis(std::string label, double low = 0., double high = 0.);
   void SetYImagaxis(std::string label, double low = 0., double high = 0.);
@@ -68,10 +69,11 @@ public:
   // Plot all the saved entries and print to file given by filename
   void Plot(std::string filename);
 
-private:
+protected:
   // Legend Parameters
   TLegend * legend = NULL;
   double xCord, yCord;
+  double xLegOffset = 0.3, yLegOffset = .15;
   bool legCustom = false, legAdd = true;
 
   // Y axis Parameters

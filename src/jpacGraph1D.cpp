@@ -50,6 +50,12 @@ void jpacGraph1D::SetLegend(double xx, double yy, std::string headr)
   legCustom = true;
 };
 
+// Custom offsets to control size of the legend
+void jpacGraph1D::SetLegendOffset(double xx, double yy)
+{
+  xLegOffset = xx; yLegOffset = yy;
+};
+
 // -----------------------------------------------------------------------------
 // Add a second Y-axis
 void jpacGraph1D::AddSecondScale(double y1, double y2, std::string label)
@@ -116,7 +122,7 @@ void jpacGraph1D::Draw()
   // Set up the Legend
   if (legCustom == true)
   {
-    legend = new TLegend(xCord, yCord, xCord + .3, yCord + .15);
+    legend = new TLegend(xCord, yCord, xCord + xLegOffset, yCord + yLegOffset);
   }
   else
   {
