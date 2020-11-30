@@ -70,11 +70,13 @@ public:
   void Plot(std::string filename);
 
 protected:
+  int line_width = 3;
+  
   // Legend Parameters
   TLegend * legend = NULL;
   double xCord, yCord;
   double xLegOffset = 0.3, yLegOffset = .15;
-  bool legCustom = false, legAdd = true;
+  bool legCustom = false, legAdd = false;
 
   // Y axis Parameters
   bool yRCustom = false, yICustom = false;
@@ -93,6 +95,12 @@ protected:
 
   // Add the logo to both plots!
   void AddLogo();
+
+  void SetMargins();
+
+  // Overrideable function executed at the end of the print step
+  inline void AddExtra()
+  {};
 };
 
 #endif

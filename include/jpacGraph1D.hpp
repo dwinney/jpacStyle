@@ -67,6 +67,10 @@ public:
   void Plot(std::string filename);
 
 protected:
+  int line_width = 3.;
+  TAxis * xAxis = NULL;
+  TAxis * yAxis = NULL;
+  
   // Legend Parameters
   TLegend * legend = NULL;
   double xCord, yCord;
@@ -81,6 +85,9 @@ protected:
 
   // Position the logo in to top right
   void AddLogo();
+
+  // Overrideable function called at end of Plot()
+  virtual void AddExtra(){};
 
   // Entries are saved in tuples with their legend title as a string
   std::vector<std::tuple<TGraph*, std::string>> entries;

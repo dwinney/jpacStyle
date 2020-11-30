@@ -145,11 +145,11 @@ void jpacGraph1D::Draw()
   TGraph* f_0 = std::get<0>(entries[0]);
   f_0->UseCurrentStyle();
   f_0->SetTitle("");
-  f_0->SetLineWidth(3);
+  f_0->SetLineWidth(line_width);
   f_0->SetLineColor(jpacColors[0]);
 
   // Set up the axes
-  TAxis* xAxis = f_0->GetXaxis();
+  xAxis = f_0->GetXaxis();
   xAxis->SetTitle(xLabel.c_str());
   xAxis->CenterTitle(true);
   if (xCustom == true)
@@ -157,7 +157,7 @@ void jpacGraph1D::Draw()
     xAxis->SetRangeUser(xlow, xhigh);
   }
 
-  TAxis* yAxis = f_0->GetYaxis();
+  yAxis = f_0->GetYaxis();
   yAxis->SetTitle(yLabel.c_str());
   yAxis->CenterTitle(true);
   if (yCustom == true)
@@ -176,7 +176,7 @@ void jpacGraph1D::Draw()
   for (int i = 1; i < entries.size(); i++)
   {
     TGraph* f_i = std::get<0>(entries[i]);
-    f_i->SetLineWidth(3);
+    f_i->SetLineWidth(line_width);
     f_i->SetLineColor(jpacColors[i]);
     f_i->Draw("same");
 
@@ -187,7 +187,7 @@ void jpacGraph1D::Draw()
   for (int j = 0; j < dashed_entries.size(); j++)
   {
     TGraph* f_j = dashed_entries[j];
-    f_j->SetLineWidth(3);
+    f_j->SetLineWidth(line_width);
     f_j->SetLineColor(jpacColors[j]);
     f_j->SetLineStyle(2);
     f_j->Draw("same");
@@ -239,7 +239,8 @@ void jpacGraph1D::Draw()
 void jpacGraph1D::Plot(std::string filename)
 {
   Draw();
+  AddExtra();
   canvas->Print(filename.c_str());
 
-  std::cout << "\njpacPlot output to: " << filename << "\n";
+  std::cout << "jpacPlot output to: " << filename << "\n";
 };

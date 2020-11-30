@@ -101,6 +101,22 @@ void jpacGraph1Dc::AddLogo()
   logo->Draw();
 };
 
+void jpacGraph1Dc::SetMargins()
+{
+  // Set up the margins of both canvases
+  canvas->cd(1)->SetTopMargin(0.04);
+  canvas->cd(1)->SetRightMargin(0.05);
+  canvas->cd(1)->SetLeftMargin(0.09);
+  canvas->cd(1)->SetBottomMargin(0.15);
+  canvas->cd(1)->SetFixedAspectRatio();
+
+  canvas->cd(2)->SetTopMargin(0.04);
+  canvas->cd(2)->SetRightMargin(0.05);
+  canvas->cd(2)->SetLeftMargin(0.09);
+  canvas->cd(2)->SetBottomMargin(0.15);
+  canvas->cd(2)->SetFixedAspectRatio();
+};
+
 // -----------------------------------------------------------------------------
 // Plot all the saved entries and print to file given by filename
 void jpacGraph1Dc::Plot(std::string filename)
@@ -125,18 +141,7 @@ void jpacGraph1Dc::Plot(std::string filename)
     std::cout << "\n";
   }
 
-  // Set up the margins of both canvases
-  canvas->cd(1)->SetTopMargin(0.04);
-  canvas->cd(1)->SetRightMargin(0.05);
-  canvas->cd(1)->SetLeftMargin(0.09);
-  canvas->cd(1)->SetBottomMargin(0.15);
-  canvas->cd(1)->SetFixedAspectRatio();
-
-  canvas->cd(2)->SetTopMargin(0.04);
-  canvas->cd(2)->SetRightMargin(0.05);
-  canvas->cd(2)->SetLeftMargin(0.09);
-  canvas->cd(2)->SetBottomMargin(0.15);
-  canvas->cd(2)->SetFixedAspectRatio();
+  SetMargins();
 
   // Set up the Legend
   if (legCustom == true)
@@ -168,7 +173,7 @@ void jpacGraph1Dc::Plot(std::string filename)
   canvas->cd(1);
   TGraph* gReal_0 = std::get<0>(entries[0]);
   gReal_0->SetTitle("");
-  gReal_0->SetLineWidth(3);
+  gReal_0->SetLineWidth(line_width);
   gReal_0->SetLineColor(jpacColors[0]);
   gReal_0->Draw("AL");
 
@@ -196,7 +201,7 @@ void jpacGraph1Dc::Plot(std::string filename)
   canvas->cd(2);
   canvas->SetTopMargin(0.0);
   gImag_0->SetTitle("");
-  gImag_0->SetLineWidth(3);
+  gImag_0->SetLineWidth(line_width);
   gImag_0->SetLineColor(jpacColors[0]);
   gImag_0->Draw("AL");
 
@@ -221,7 +226,7 @@ void jpacGraph1Dc::Plot(std::string filename)
   {
     canvas->cd(1);
     TGraph* gReal_i = std::get<0>(entries[i]);
-    gReal_i->SetLineWidth(3);
+    gReal_i->SetLineWidth(line_width);
     gReal_i->SetLineColor(jpacColors[i]);
     gReal_i->Draw("same");
 
@@ -230,7 +235,7 @@ void jpacGraph1Dc::Plot(std::string filename)
 
     canvas->cd(2);
     TGraph* gImag_i = std::get<1>(entries[i]);
-    gImag_i->SetLineWidth(3);
+    gImag_i->SetLineWidth(line_width);
     gImag_i->SetLineColor(jpacColors[i]);
     gImag_i->Draw("same");
   };
@@ -244,6 +249,8 @@ void jpacGraph1Dc::Plot(std::string filename)
     canvas->cd(0);
     legend->Draw();
   }
+
+  AddExtra();
 
   canvas->Modified();
   canvas->Print(filename.c_str());
