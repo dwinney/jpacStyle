@@ -37,6 +37,7 @@ file(GLOB_RECURSE INC "include/*.hpp")
 file(GLOB_RECURSE SRC "src/*.cpp")
 
 add_library(jpacStyle SHARED ${INC} ${SRC} )
+target_link_libraries( jpacStyle ${ROOT_LIBRARIES})
 
 install(TARGETS jpacStyle
   LIBRARY DESTINATION "${LIBRARY_OUTPUT_DIRECTORY}" )
