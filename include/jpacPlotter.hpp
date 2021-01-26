@@ -29,10 +29,18 @@ public:
   ~jpacPlotter()
   {
     delete jpacStyle;
-    delete jpacBlue, jpacRed, jpacGreen;
-    delete jpacOrange, jpacPurple, jpacBrown;
-    delete jpacPink, jpacGold, jpacAqua, jpacGrey;
-    delete canvas, logo;
+    delete jpacBlue;
+    delete jpacRed;
+    delete jpacGreen;
+    delete jpacOrange;
+    delete jpacPurple;
+    delete jpacBrown;
+    delete jpacPink;
+    delete jpacGold;
+    delete jpacAqua;
+    delete jpacGrey;
+    delete canvas;
+    delete logo;
   };
 
   // Default font

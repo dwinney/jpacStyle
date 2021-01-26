@@ -41,7 +41,9 @@ public:
       delete std::get<0>(entries[i]);
       delete std::get<1>(entries[i]);
     }
-    delete imagTag, realTag, legend;
+    delete imagTag;
+    delete realTag;
+    delete legend;
   };
 
   inline void setup()

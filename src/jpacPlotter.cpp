@@ -45,7 +45,7 @@ void jpacPlotter::SetStyle()
   jpacStyle->SetTitleOffset(1.3, "xyz");
 
   // More space for y-axis to avoid clashing with big numbers
-  jpacStyle->SetTitleOffset(1.55, "y");
+  jpacStyle->SetTitleOffset(1.3, "y");
 
   // This applies the same settings to the overall plot title
   jpacStyle->SetTitleSize(.055, "");
