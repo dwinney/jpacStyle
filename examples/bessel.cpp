@@ -27,7 +27,7 @@ int main()
     std::vector<double> bx;
     for (int i = 0; i < 100; i++)
     {
-      double x_i = double(i) * 20. / 100.;
+      double x_i = 1.E-6 + double(i) * 20. / 100.;
       double bx_i = ROOT::Math::cyl_bessel_j(alpha, x_i);
 
       if (alpha == 0)

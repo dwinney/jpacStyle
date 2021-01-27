@@ -43,7 +43,6 @@ public:
       delete dashed_entries[i];
     }
     delete legend;
-    delete logo;
   };
 
   // Take in x and f(x) values as a vector and a legend entry
