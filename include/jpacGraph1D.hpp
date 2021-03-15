@@ -46,7 +46,7 @@ public:
   };
 
   // Take in x and f(x) values as a vector and a legend entry
-  void AddEntry(std::vector<double> xs, std::vector<double> fxs, std::string name);
+  void AddEntry(std::vector<double> xs, std::vector<double> fxs, std::string name, int DASH = 0);
 
   // Dashed entries reset the color order and dont add a legend entry
   void AddDashedEntry(std::vector<double> xs, std::vector<double> fxs);

@@ -9,9 +9,11 @@
 
 // -----------------------------------------------------------------------------
 // Take in x and f(x) values as a vector and a legend entry
-void jpacGraph1D::AddEntry(std::vector<double> xs, std::vector<double> fxs, std::string name)
+void jpacGraph1D::AddEntry(std::vector<double> xs, std::vector<double> fxs, std::string name, int DASH)
 {
   TGraph *g = new TGraph(xs.size(), &(xs[0]), &(fxs[0]));
+  g->SetLineStyle(DASH);
+
   auto entry = std::make_tuple(g, name);
 
   entries.push_back(entry);
